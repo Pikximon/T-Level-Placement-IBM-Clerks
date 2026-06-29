@@ -1,0 +1,2263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Clerks Footwear</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Playfair+Display:ital,wght@0,600;1,600&family=Lato:wght@400;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Barlow+Condensed:wght@700;900&family=Playfair+Display:ital,wght@0,600;1,600&family=Lato:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+
+/* ── RESET ─────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body   { font-family: 'Lato', sans-serif; color: #1a1a1a; background: #fff; overflow-x: hidden; }
+a      { text-decoration: none; color: inherit; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; font-size: inherit; }
+img    { display: block; max-width: 100%; }
+
+/* ── VARIABLES ──────────────────────────────────────────────────── */
+:root {
+  --green: #84FF00;
+  --gold:  #C9A96E;
+  --brown: #8B4513;
+  --red:   #e53e3e;
+}
+
+/* ── ANNOUNCEMENT BAR ───────────────────────────────────────────── */
+.ann-bar { background: #1a1a1a; color: #fff; overflow: hidden; white-space: nowrap; }
+body.sport  .ann-bar { background: var(--green); color: #000; }
+.ann-track  { display: inline-flex; animation: ticker 28s linear infinite; padding: 9px 0; }
+.ann-track span { padding: 0 28px; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ── UTILITY NAV ────────────────────────────────────────────────── */
+.util-nav { display: flex; justify-content: space-between; align-items: center; padding: 5px 24px; background: #f5f5f5; border-bottom: 1px solid rgba(0,0,0,.07); }
+body.sport  .util-nav { background: #111; }
+.util-nav button { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: #777; transition: color .2s; }
+.util-nav button:hover   { color: #000; }
+body.sport .util-nav button { color: #666; }
+body.sport .util-nav button:hover { color: var(--green); }
+.u-left, .u-right { display: flex; gap: 12px; align-items: center; }
+.u-green { color: var(--green) !important; }
+.u-gold  { color: var(--gold)  !important; }
+
+/* ── HEADER ─────────────────────────────────────────────────────── */
+.header {
+  position: sticky; top: 0; z-index: 100;
+  display: flex; align-items: center; gap: 12px;
+  padding: 13px 24px; background: #fff;
+  border-bottom: 1px solid rgba(0,0,0,.08);
+  transition: background .4s;
+}
+body.sport  .header { background: #0a0a0a; border-color: rgba(255,255,255,.07); }
+body.formal .header { background: #fff; }
+
+.logo { font-family:'Barlow Condensed',sans-serif; font-size: 28px; font-weight: 900; letter-spacing: -.02em; text-transform: uppercase; color: #1a1a1a; flex-shrink: 0; }
+body.sport  .logo { color: #fff; }
+.logo .acc { color: #1a1a1a; }
+body.sport  .logo .acc { color: var(--green); }
+body.formal .logo .acc { color: var(--brown); }
+
+.main-nav { display: flex; gap: 2px; flex: 1; flex-wrap: wrap; }
+.nav-a { padding: 6px 9px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: #333; border-radius: 3px; transition: color .2s, background .2s; }
+.nav-a:hover { background: #f0f0f0; }
+body.sport .nav-a       { color: #bbb; }
+body.sport .nav-a:hover { color: var(--green); background: rgba(255,255,255,.04); }
+.nav-a.sale { color: var(--red); }
+
+/* srch-btn removed */
+
+.icon-row { display: flex; gap: 4px; margin-left: auto; }
+.icon-btn { position: relative; padding: 8px; font-size: 18px; border-radius: 6px; color: #333; transition: background .2s; }
+.icon-btn:hover { background: #f0f0f0; }
+body.sport .icon-btn       { color: #ccc; }
+body.sport .icon-btn:hover { background: rgba(255,255,255,.06); color: #fff; }
+.bdg { position: absolute; top: 2px; right: 2px; min-width: 16px; height: 16px; background: var(--green); color: #000; font-size: 9px; font-weight: 900; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+body.formal .bdg { background: var(--brown); color: #fff; }
+
+/* ── HOME: SPLIT HERO ───────────────────────────────────────────── */
+.split-hero { display: flex; height: 86vh; min-height: 460px; overflow: hidden; position: relative; }
+.hero-panel { flex: 1; position: relative; cursor: pointer; overflow: hidden; transition: flex .5s ease; }
+.hero-panel:hover { flex: 1.25; }
+.hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease, filter .4s; }
+.hero-panel:hover .hero-bg { transform: scale(1.05); filter: brightness(1.1); }
+.hero-grad { position: absolute; inset: 0; }
+.sg { background: linear-gradient(135deg, rgba(0,17,51,.88) 0%, rgba(10,10,10,.6) 100%); }
+.fg { background: linear-gradient(to top, rgba(20,10,0,.88) 0%, transparent 60%); }
+.hero-shadow-dark { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 50%); }
+.hero-shadow-warm { position: absolute; inset: 0; background: linear-gradient(to top, rgba(20,10,0,0.85) 0%, transparent 55%); }
+.hero-txt { position: absolute; bottom: 0; left: 0; padding: 40px; z-index: 2; }
+.hero-txt.r { left: auto; right: 0; text-align: right; }
+.hlabel { display: inline-block; font-size: 10px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; padding: 5px 12px; margin-bottom: 14px; }
+.sl { background: var(--green); color: #000; }
+.fl { background: var(--gold);  color: #1a1a1a; }
+.hero-h1 { font-size: clamp(44px,7vw,86px); font-weight: 900; line-height: 1; color: #fff; text-transform: uppercase; margin-bottom: 12px; }
+.sh1 { font-family:'Barlow Condensed',sans-serif; letter-spacing: -.02em; }
+.fh1 { font-family:'Playfair Display',serif; text-transform: none; font-weight: 700; }
+em { font-style: normal; }
+.cg { color: var(--green); }
+.co { color: var(--gold); }
+.cr { color: var(--red); }
+.hero-sub { color: rgba(255,255,255,.72); font-size: 14px; max-width: 280px; line-height: 1.6; margin-bottom: 22px; }
+.hero-cta { display: inline-block; padding: 12px 26px; font-size: 12px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.scta { background: var(--green); color: #000; }
+.scta:hover { background: #70dd00; }
+.fcta { background: var(--gold); color: #1a1a1a; }
+.fcta:hover { background: #b5915c; }
+.or-badge { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); z-index: 10; width: 56px; height: 56px; border-radius: 50%; background: #fff; color: #1a1a1a; font-family:'Barlow Condensed',sans-serif; font-size: 14px; font-weight: 900; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(0,0,0,.3); border: 3px solid #eee; pointer-events: none; }
+.hover-outline { position: absolute; inset: 0; border: 4px solid transparent; pointer-events: none; transition: border-color .3s; z-index: 3; }
+.sport-panel:hover .hover-outline { border-color: #84FF00; }
+.formal-panel:hover .hover-outline { border-color: #C9A96E; }
+
+/* ── BRAND STRIP ────────────────────────────────────────────────── */
+.brand-strip { background: #f0f0f0; overflow: hidden; padding: 15px 0; }
+.brand-track { display: inline-flex; gap: 52px; animation: ticker 20s linear infinite; }
+.brand-track span { font-family:'Barlow Condensed',sans-serif; font-size: 22px; font-weight: 900; letter-spacing: .15em; color: #ccc; flex-shrink: 0; }
+
+/* ── SECTION WRAPPER ────────────────────────────────────────────── */
+.section { max-width: 1200px; margin: 0 auto; padding: 56px 24px; }
+.sec-hdr { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 28px; }
+.eyebrow { display: block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 5px; }
+.sec-h2 { font-family:'Barlow Condensed',sans-serif; font-size: 36px; font-weight: 900; text-transform: uppercase; }
+.see-all { font-size: 12px; font-weight: 700; text-transform: uppercase; color: #777; }
+.see-all:hover { color: #000; }
+.grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; }
+
+/* Sale card */
+.sale-card { cursor: pointer; transition: transform .25s; }
+.sale-card:hover { transform: translateY(-4px); }
+.sale-img { position: relative; aspect-ratio: 1; overflow: hidden; background: #f5f5f5; margin-bottom: 10px; }
+.sale-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+.sale-card:hover .sale-img img { transform: scale(1.06); }
+.sale-bdg { position: absolute; top: 10px; left: 10px; background: var(--red); color: #fff; font-size: 10px; font-weight: 800; padding: 3px 8px; text-transform: uppercase; }
+.cb { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: #aaa; margin-bottom: 3px; }
+.cn { font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+.cp { display: flex; gap: 8px; align-items: center; }
+.pn { font-size: 15px; font-weight: 700; color: var(--red); }
+.pw { font-size: 12px; color: #bbb; text-decoration: line-through; }
+
+/* ── PROMO BANNERS ──────────────────────────────────────────────── */
+.promo-row { display: grid; grid-template-columns: 1fr 1fr; }
+.promo { position: relative; height: 270px; overflow: hidden; cursor: pointer; }
+.promo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .5s, opacity .4s; }
+.promo:hover img { transform: scale(1.05); }
+.p-sport { background: #001133; }
+.p-sport img { opacity: .35; }
+.p-sport:hover img { opacity: .5; }
+.p-formal { background: #f8f4ee; }
+.p-formal img { opacity: .5; }
+.p-formal::after { content:''; position: absolute; inset: 0; background: linear-gradient(to right,rgba(248,244,238,.95) 35%,transparent); }
+.p-txt { position: absolute; bottom: 0; left: 0; padding: 28px; z-index: 2; }
+.p-h3 { font-size: 24px; font-weight: 900; color: #fff; text-transform: uppercase; line-height: 1.2; margin: 8px 0 12px; }
+.p-h3.fm { font-family:'Playfair Display',serif; color: #1a1a1a; text-transform: none; }
+.p-lnk { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; }
+
+/* ── FEATURES ───────────────────────────────────────────────────── */
+.feats { display: grid; grid-template-columns: repeat(4,1fr); background: #f7f7f7; padding: 40px 24px; text-align: center; }
+.feat { padding: 12px; }
+.feat-ico { font-size: 26px; width: 50px; height: 50px; background: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; box-shadow: 0 2px 8px rgba(0,0,0,.06); }
+.feat h4 { font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 3px; }
+.feat p  { font-size: 12px; color: #888; }
+
+/* ── FOOTER ─────────────────────────────────────────────────────── */
+footer { background: #111; color: #fff; padding: 50px 24px 0; }
+.foot-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 36px; max-width: 1100px; margin: 0 auto 36px; }
+.foot-logo { font-family:'Barlow Condensed',sans-serif; font-size: 26px; font-weight: 900; color: var(--green); margin-bottom: 8px; }
+.foot-brand p { font-size: 12px; color: #555; line-height: 1.7; margin-bottom: 14px; }
+.soc-row { display: flex; gap: 8px; }
+.soc-btn { width: 32px; height: 32px; background: rgba(255,255,255,.07); border-radius: 50%; font-size: 13px; display: flex; align-items: center; justify-content: center; transition: background .2s; }
+.soc-btn:hover { background: var(--green); color: #000; }
+.foot-col h4 { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: #555; margin-bottom: 12px; }
+.foot-col a { display: block; font-size: 12px; color: #666; margin-bottom: 7px; transition: color .2s; }
+.foot-col a:hover { color: #fff; }
+.foot-btm { border-top: 1px solid rgba(255,255,255,.07); padding: 18px 0; display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; font-size: 11px; color: #444; }
+.foot-btm a { color: #444; margin-left: 14px; }
+.foot-btm a:hover { color: #aaa; }
+
+/* ── VIEW HERO ──────────────────────────────────────────────────── */
+.view-hero { position: relative; height: 300px; overflow: hidden; }
+.vh-sport  { background: #001133; }
+.vh-formal { background: #f0ebe4; }
+.view-hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.vh-sport  img { opacity: .22; }
+.vh-formal img { opacity: .35; }
+.vh-formal::after { content:''; position: absolute; inset: 0; background: linear-gradient(to right,rgba(240,235,228,.95) 40%,transparent); }
+.vh-txt { position: absolute; bottom: 0; left: 0; padding: 36px 48px; z-index: 2; color: #fff; }
+.vh-txt.fm { color: #1a1a1a; }
+.vh-h1 { font-size: clamp(36px,5vw,66px); font-weight: 900; line-height: 1.05; margin: 10px 0 8px; }
+.vh-hs { font-family:'Barlow Condensed',sans-serif; text-transform: uppercase; letter-spacing: -.02em; }
+.vh-hf { font-family:'Playfair Display',serif; }
+.vh-txt p { font-size: 14px; color: rgba(255,255,255,.6); max-width: 400px; }
+.vh-txt.fm p { color: #777; }
+.new-tag {color: #FFFF00; font-family: 'Archivo Black', sans-serif; font-weight: 900; text-transform: uppercase; font-size: 11px; letter-spacing: 0.3px; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6); -webkit-font-smoothing: antialiased;}
+
+/* ── PILL ROW ───────────────────────────────────────────────────── */
+.pill-row { display: flex; gap: 8px; padding: 14px 24px; overflow-x: auto; scrollbar-width: none; }
+.pill-row::-webkit-scrollbar { display: none; }
+.sp-pills { background: #111; border-bottom: 1px solid rgba(255,255,255,.07); }
+.fm-pills { background: #fff; border-bottom: 1px solid rgba(0,0,0,.08); }
+.pill { flex-shrink: 0; padding: 7px 18px; border-radius: 999px; font-size: 11px; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; cursor: pointer; transition: background .2s, color .2s; }
+.pill-s { background: rgba(255,255,255,.06); color: #888; border: 1px solid rgba(255,255,255,.1); }
+.pill-s:hover { color: #fff; background: rgba(255,255,255,.1); }
+.pill-s.on { background: var(--green); color: #000; border-color: var(--green); }
+.pill-f { background: transparent; color: #999; border-bottom: 2px solid transparent; border-radius: 0; padding: 10px 14px; }
+.pill-f:hover { color: #1a1a1a; }
+.pill-f.on { color: var(--brown); border-bottom-color: var(--brown); }
+
+/* ── SHOP LAYOUT ────────────────────────────────────────────────── */
+.shop { display: flex; max-width: 1400px; margin: 0 auto; align-items: stretch; }
+.sidebar { width: 210px; flex-shrink: 0; padding: 22px 18px; border-right: 1px solid rgba(0,0,0,.08); position: sticky; top: 0; max-height: 100vh; overflow-y: auto; }
+.filter-toggle-btn { display: none; }
+.sb-close-btn { display: none; }
+.sb-backdrop { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.45); z-index: 899; }
+.sb-backdrop.on { display: block; }
+.sb-s { background: #0d0d0d; border-color: rgba(255,255,255,.07); }
+.sb-f { background: #fff; }
+.sb-title { font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 18px; }
+.sb-s .sb-title { color: var(--green); }
+.sb-f .sb-title { color: var(--brown); }
+.fb { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid rgba(0,0,0,.05); }
+.sb-s .fb { border-color: rgba(255,255,255,.06); }
+.fb h4 { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; margin-bottom: 9px; color: #1a1a1a; }
+.sb-s .fb h4 { color: #fff; }
+.fb label { display: flex; align-items: center; gap: 7px; font-size: 12px; color: #666; margin-bottom: 6px; cursor: pointer; transition: color .2s; }
+.fb label:hover { color: #000; }
+.sb-s .fb label       { color: #888; }
+.sb-s .fb label:hover { color: #fff; }
+.fb input[type=checkbox] { width: 13px; height: 13px; accent-color: var(--green); cursor: pointer; }
+.sb-f .fb input[type=checkbox] { accent-color: var(--brown); }
+.rng { width: 100%; margin: 6px 0 4px; cursor: pointer; accent-color: var(--green); }
+.sb-f .rng { accent-color: var(--brown); }
+.rng-lbl { font-size: 11px; color: #888; }
+.fsel { width: 100%; padding: 7px 9px; border-radius: 4px; font-size: 12px; font-family: inherit; border: 1px solid #ccc; background: #fff; color: #1a1a1a; cursor: pointer; }
+.sb-s .fsel { background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.1); color: #ccc; }
+.sw-row { display: flex; flex-wrap: wrap; gap: 7px; }
+.sw { width: 26px; height: 26px; border-radius: 50%; border: 2px solid transparent; box-shadow: 0 1px 4px rgba(0,0,0,.28); cursor: pointer; transition: transform .15s; }
+.sw:hover { transform: scale(1.15); }
+.sw.on { border-color: var(--brown); outline: 2px solid var(--brown); outline-offset: 2px; }
+.clr-btn { width: 100%; margin-top: 2px; padding: 8px; font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; border-radius: 4px; border: 1px solid; transition: background .2s, color .2s; }
+.sb-s .clr-btn { border-color: rgba(255,255,255,.12); color: #777; }
+.sb-s .clr-btn:hover { background: rgba(255,255,255,.05); color: #fff; }
+.sb-f .clr-btn { border-color: #ccc; color: #777; }
+.sb-f .clr-btn:hover { background: var(--brown); color: #fff; border-color: var(--brown); }
+.prod-area { flex: 1; padding: 18px 20px 40px; min-width: 0; }
+.res-bar { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; font-size: 12px; color: #aaa; }
+.ftags { color: #888; font-style: italic; }
+.prod-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(188px,1fr)); gap: 14px; }
+.no-res { text-align: center; padding: 60px; color: #aaa; font-size: 14px; }
+.no-res button { color: var(--brown); text-decoration: underline; cursor: pointer; }
+body.sport .no-res button { color: var(--green); }
+
+/* ── SPORT CARD ─────────────────────────────────────────────────── */
+.sc { background: #111; border: 1px solid rgba(255,255,255,.08); border-radius: 7px; overflow: hidden; cursor: pointer; transition: transform .25s, border-color .25s, box-shadow .25s; }
+.sc:hover { transform: translateY(-5px); border-color: rgba(132,255,0,.35); box-shadow: 0 14px 40px rgba(132,255,0,.08); }
+.ci { position: relative; aspect-ratio: 1/1.05; overflow: hidden; background: #1a1a1a; padding: 6px; }
+.ci img { width: 100%; height: 100%; object-fit: contain; transition: transform .5s; }
+.sc:hover .ci img { transform: scale(1.06); }
+.fc:hover .ci img { transform: scale(1.04); }
+.disc-bdg { position: absolute; top: 8px; left: 8px; background: var(--green); color: #000; font-size: 9px; font-weight: 900; padding: 3px 7px; border-radius: 3px; text-transform: uppercase; }
+.new-bdg  { position: absolute; top: 8px; left: 8px; background: #0055FF; color: #fff; font-size: 9px; font-weight: 900; padding: 3px 7px; border-radius: 3px; text-transform: uppercase; }
+.wish-btn { position: absolute; top: 8px; right: 8px; width: 28px; height: 28px; background: rgba(0,0,0,.55); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; transition: background .2s; }
+.wish-btn:hover { background: rgba(0,0,0,.8); }
+.add-bar { position: absolute; bottom: 0; left: 0; right: 0; background: var(--green); color: #000; font-size: 10px; font-weight: 900; text-align: center; padding: 8px; text-transform: uppercase; letter-spacing: .07em; transform: translateY(100%); transition: transform .28s; }
+.sc:hover .add-bar, .fc:hover .add-bar { transform: translateY(0); }
+.add-bar:hover { background: #70dd00; }
+.cb2 { padding: 11px; }
+.brt { font-size: 9px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; color: var(--green); margin-bottom: 2px; }
+.ctt { font-size: 12px; font-weight: 600; color: #fff; line-height: 1.3; margin-bottom: 5px; }
+.cst { font-size: 10px; color: #f59e0b; margin-bottom: 6px; }
+.cst span { color: #555; margin-left: 3px; }
+.cpp { display: flex; align-items: center; gap: 6px; margin-bottom: 7px; }
+.pnow { font-size: 14px; font-weight: 800; color: #fff; }
+.pwas { font-size: 11px; color: #555; text-decoration: line-through; }
+.ppct { font-size: 10px; font-weight: 800; color: var(--green); margin-left: auto; }
+.dots { display: flex; gap: 4px; }
+.dot  { width: 11px; height: 11px; border-radius: 50%; border: 1px solid rgba(255,255,255,.15); }
+
+/* ── FORMAL CARD ────────────────────────────────────────────────── */
+.fc { background: #fff; border: 1px solid #e8e8e8; cursor: pointer; transition: transform .3s, border-color .3s, box-shadow .3s; }
+.fc:hover { transform: translateY(-4px); border-color: rgba(139,69,19,.25); box-shadow: 0 10px 30px rgba(0,0,0,.08); }
+.fc .ci { background: #f5f0ea; padding: 6px; }
+.fc .disc-bdg { background: var(--brown); color: #fff; }
+.fc .new-bdg  { background: #1a1a1a; }
+.fc .add-bar  { background: #1a1a1a; color: #fff; }
+.fc .add-bar:hover { background: var(--brown); }
+.fc .cb2 { border-top: 1px solid #f0f0f0; }
+.fc .brt  { color: var(--brown); }
+.fc .ctt  { color: #1a1a1a; font-family:'Playfair Display',serif; }
+.fc .pnow { color: #1a1a1a; }
+.fc .ppct { color: var(--brown); }
+.fc .dot  { border-color: rgba(0,0,0,.12); }
+
+/* ── MODAL ──────────────────────────────────────────────────────── */
+.modal-bg { position: fixed; inset: 0; background: rgba(0,0,0,.6); z-index: 200; display: none; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(4px); }
+.modal-box { position: relative; background: #fff; width: 100%; max-width: 860px; max-height: 90vh; overflow-y: auto; border-radius: 6px; box-shadow: 0 24px 80px rgba(0,0,0,.4); animation: popin .28s ease; }
+@keyframes popin { from { opacity:0; transform:scale(.95) translateY(16px); } to { opacity:1; transform:scale(1) translateY(0); } }
+body.sport .modal-box { background: #111; color: #fff; }
+.m-close { position: absolute; top: 14px; right: 14px; width: 30px; height: 30px; background: rgba(0,0,0,.08); border-radius: 50%; font-size: 13px; display: flex; align-items: center; justify-content: center; z-index: 5; }
+.m-close:hover { background: rgba(0,0,0,.18); }
+body.sport .m-close { background: rgba(255,255,255,.1); color: #bbb; }
+.m-layout { display: grid; grid-template-columns: 1fr 1fr; }
+.m-img-col { background: #f7f3ee; padding: 22px; display: flex; flex-direction: column; gap: 10px; }
+body.sport .m-img-col { background: #1a1a1a; }
+.m-main-img { width: 100%; aspect-ratio: 1; object-fit: contain; border-radius: 4px; }
+.m-thumbs { display: flex; gap: 7px; flex-wrap: wrap; }
+.mth { width: 52px; height: 52px; object-fit: contain; border-radius: 3px; cursor: pointer; border: 2px solid transparent; opacity: .6; transition: opacity .2s, border-color .2s; }
+.mth:hover,.mth.on { opacity:1; border-color: var(--brown); }
+body.sport .mth.on { border-color: var(--green); }
+.m-info { padding: 28px 26px; display: flex; flex-direction: column; gap: 13px; }
+.m-brand { font-size: 10px; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; color: var(--brown); }
+body.sport .m-brand { color: var(--green); }
+.m-name { font-size: 20px; font-weight: 700; line-height: 1.25; }
+body.sport .m-name { font-family:'Barlow Condensed',sans-serif; font-size: 26px; color: #fff; }
+.m-stars { font-size: 13px; color: #f59e0b; }
+.m-stars span { color: #aaa; font-size: 11px; margin-left: 4px; }
+.m-pr { display: flex; align-items: center; gap: 10px; }
+.m-price { font-size: 24px; font-weight: 800; }
+body.sport .m-price { color: #fff; }
+.m-was  { font-size: 14px; color: #aaa; text-decoration: line-through; }
+.m-disc { background: var(--green); color: #000; font-size: 10px; font-weight: 900; padding: 3px 7px; border-radius: 3px; }
+body.formal .m-disc { background: var(--brown); color: #fff; }
+.pk-lbl { font-size: 12px; font-weight: 600; color: #777; margin-bottom: 8px; }
+body.sport .pk-lbl { color: #888; }
+.col-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.col-btn { width: 30px; height: 30px; border-radius: 50%; border: 2px solid transparent; box-shadow: 0 1px 4px rgba(0,0,0,.3); cursor: pointer; transition: transform .15s; }
+.col-btn:hover { transform: scale(1.12); }
+.col-btn.on { border-color: #1a1a1a; outline: 2px solid #1a1a1a; outline-offset: 2px; }
+body.sport .col-btn.on { border-color: var(--green); outline-color: var(--green); }
+.sz-hdr { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.sz-guide { font-size: 11px; color: var(--brown); text-decoration: underline; }
+body.sport .sz-guide { color: var(--green); }
+.sz-grid { display: flex; flex-wrap: wrap; gap: 6px; }
+.sz-btn { width: 46px; height: 38px; border: 1px solid #ddd; border-radius: 4px; font-size: 12px; font-weight: 700; background: #fff; color: #1a1a1a; cursor: pointer; transition: border-color .15s, background .15s, color .15s; }
+.sz-btn:hover { border-color: var(--brown); color: var(--brown); }
+.sz-btn.on  { background: var(--brown); color: #fff; border-color: var(--brown); }
+.sz-btn.oos { opacity: .28; text-decoration: line-through; cursor: not-allowed; }
+body.sport .sz-btn { background: rgba(255,255,255,.04); border-color: rgba(255,255,255,.12); color: #ccc; }
+body.sport .sz-btn:hover { border-color: var(--green); color: var(--green); }
+body.sport .sz-btn.on { background: var(--green); color: #000; border-color: var(--green); }
+.m-desc { font-size: 13px; color: #777; line-height: 1.65; }
+body.sport .m-desc { color: #888; }
+.m-feats { padding-left: 0; }
+.m-feats li { font-size: 12px; color: #777; padding: 3px 0; display: flex; gap: 6px; }
+.m-feats li::before { content:'✓'; color: var(--brown); font-weight: 700; }
+body.sport .m-feats li::before { color: var(--green); }
+body.sport .m-feats li { color: #888; }
+.atb-btn { width: 100%; padding: 14px; background: var(--brown); color: #fff; font-size: 13px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; border-radius: 4px; transition: background .2s; }
+.atb-btn:hover { background: #7a3b10; }
+body.sport .atb-btn       { background: var(--green); color: #000; }
+body.sport .atb-btn:hover { background: #70dd00; }
+.m-del { font-size: 11px; color: #aaa; }
+
+/* ── CART ───────────────────────────────────────────────────────── */
+.cart-shade { position: fixed; inset: 0; background: rgba(0,0,0,.45); z-index: 150; display: none; }
+.cart-draw { position: fixed; top: 0; right: 0; width: 370px; max-width: 100%; height: 100%; z-index: 151; display: flex; flex-direction: column; background: #fff; box-shadow: -8px 0 40px rgba(0,0,0,.2); transform: translateX(100%); transition: transform .32s ease; }
+.cart-draw.open { transform: translateX(0); }
+body.sport .cart-draw { background: #111; color: #fff; }
+.cart-hd { display: flex; align-items: center; justify-content: space-between; padding: 18px 20px; border-bottom: 1px solid rgba(0,0,0,.07); font-size: 15px; font-weight: 700; }
+body.sport .cart-hd { border-color: rgba(255,255,255,.07); }
+.cart-hd button { font-size: 18px; color: #aaa; }
+.cart-hd button:hover { color: #000; }
+body.sport .cart-hd button:hover { color: #fff; }
+.cart-list { flex: 1; overflow-y: auto; padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+.cart-row { display: flex; gap: 10px; padding: 10px; border-radius: 6px; background: #f9f9f9; }
+body.sport .cart-row { background: rgba(255,255,255,.05); }
+.cart-row img { width: 60px; height: 60px; object-fit: cover; border-radius: 3px; flex-shrink: 0; }
+.ci2 { flex: 1; min-width: 0; }
+.ci2 .cbr { font-size: 9px; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; color: var(--brown); }
+body.sport .ci2 .cbr { color: var(--green); }
+.ci2 .cnm { font-size: 12px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+body.sport .ci2 .cnm { color: #fff; }
+.ci2 .cmt { font-size: 11px; color: #aaa; margin: 2px 0 6px; }
+.qty-row { display: flex; align-items: center; gap: 7px; }
+.qty-btn { width: 22px; height: 22px; background: rgba(0,0,0,.07); border-radius: 3px; font-size: 14px; font-weight: 700; display: flex; align-items: center; justify-content: center; transition: background .15s; }
+.qty-btn:hover { background: rgba(0,0,0,.14); }
+body.sport .qty-btn { background: rgba(255,255,255,.08); color: #fff; }
+.qty-n { font-size: 13px; font-weight: 700; min-width: 14px; text-align: center; }
+body.sport .qty-n { color: #fff; }
+.ipr { font-size: 13px; font-weight: 800; margin-left: auto; align-self: flex-end; }
+body.sport .ipr { color: #fff; }
+.cart-ft { padding: 14px 18px; border-top: 1px solid rgba(0,0,0,.07); }
+body.sport .cart-ft { border-color: rgba(255,255,255,.07); }
+.sub-row { display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 6px; }
+body.sport .sub-row { color: #ccc; }
+.fdel { font-size: 11px; color: var(--green); margin-bottom: 12px; }
+body.formal .fdel { color: var(--brown); }
+.co-btn { width: 100%; padding: 14px; background: #1a1a1a; color: #fff; font-size: 12px; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; border-radius: 4px; margin-bottom: 7px; transition: background .2s; }
+.co-btn:hover { background: #333; }
+body.sport .co-btn       { background: var(--green); color: #000; }
+body.sport .co-btn:hover { background: #70dd00; }
+.ks-btn { width: 100%; padding: 10px; font-size: 11px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; border: 1px solid #ccc; color: #aaa; border-radius: 4px; transition: all .2s; }
+.ks-btn:hover { border-color: #666; color: #1a1a1a; }
+.cart-empty { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; font-size: 20px; color: #ccc; }
+.cart-empty p:last-child { font-size: 13px; }
+
+/* ── SIDEBAR SEARCH ─────────────────────────────────────────────── */
+.sb-search-wrap { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid rgba(0,0,0,.05); }
+.sb-s .sb-search-wrap { border-color: rgba(255,255,255,.06); }
+.sb-search-wrap h4 { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; margin-bottom: 9px; color: #1a1a1a; }
+.sb-s .sb-search-wrap h4 { color: #fff; }
+.sb-search-inp { position: relative; }
+.sb-search-inp input {
+  width: 100%; padding: 7px 30px 7px 9px;
+  border: 1px solid #ccc; border-radius: 4px;
+  font-size: 12px; font-family: inherit;
+  background: #fff; color: #1a1a1a;
+  outline: none; transition: border-color .2s;
+}
+.sb-search-inp input:focus { border-color: var(--brown); }
+.sb-s .sb-search-inp input { background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.1); color: #ccc; }
+.sb-s .sb-search-inp input::placeholder { color: #555; }
+.sb-s .sb-search-inp input:focus { border-color: var(--green); }
+.sb-search-inp input::placeholder { color: #aaa; }
+.sb-search-clear {
+  position: absolute; right: 7px; top: 50%; transform: translateY(-50%);
+  font-size: 13px; color: #aaa; display: none; line-height: 1;
+  padding: 0; background: none; border: none; cursor: pointer;
+}
+.sb-s .sb-search-clear { color: #666; }
+.sb-search-clear:hover { color: #1a1a1a; }
+.sb-s .sb-search-clear:hover { color: #fff; }
+
+/* ── PROMISE SECTION ────────────────────────────────────────────── */
+.promise { background: #1a1a1a; color: #fff; text-align: center; padding: 56px 24px; }
+.promise-h3 { font-family:'Playfair Display',serif; font-size: 34px; font-weight: 700; margin: 12px 0 10px; }
+.promise p { color: #777; font-size: 14px; max-width: 460px; margin: 0 auto 18px; line-height: 1.6; }
+.promise-chks { display: flex; justify-content: center; gap: 22px; flex-wrap: wrap; }
+.promise-chks span { font-size: 13px; color: #888; }
+.promise-chks span::before { content:'✓ '; color: var(--gold); }
+
+/* ── RESPONSIVE ─────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .u-right,.main-nav { display: none; }
+  .split-hero { flex-direction: column; height: auto; }
+  .hero-panel { flex: none; height: 55vw; min-height: 220px; }
+  .hero-panel:hover { flex: none; }
+  .or-badge { display: none; }
+  .hero-txt { padding: 18px; }
+  .hero-h1 { font-size: 38px; }
+  .grid-4 { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .promo-row,.feats { grid-template-columns: 1fr 1fr; }
+  .promo { height: 220px; }
+  .foot-grid { grid-template-columns: 1fr 1fr; }
+  .m-layout { grid-template-columns: 1fr; }
+  .m-img-col { display: none; }
+  .cart-draw { width: 100%; }
+}
+
+/* ── FILTER DRAWER (≤ 640px) ────────────────────────────────────── */
+@media (max-width: 640px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 270px;
+    height: 100%;
+    max-height: 100%;
+    z-index: 900;
+    transform: translateX(-100%);
+    transition: transform .3s ease;
+    overflow-y: auto;
+    border-right: none;
+  }
+  .sidebar.sb-open { transform: translateX(0); }
+  .filter-toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 12px;
+    padding: 9px 16px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .05em;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background: #fff;
+    color: #1a1a1a;
+    cursor: pointer;
+  }
+  body.sport .filter-toggle-btn {
+    background: #1a1a1a;
+    border-color: rgba(255,255,255,.15);
+    color: #fff;
+  }
+  .sb-close-btn {
+    display: block;
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    font-size: 16px;
+    line-height: 1;
+    padding: 4px 8px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: #aaa;
+  }
+  .sb-close-btn:hover { color: #fff; }
+  .sb-f .sb-close-btn { color: #888; }
+  .sb-f .sb-close-btn:hover { color: #1a1a1a; }
+  .sidebar { padding-top: 48px; }
+}
+
+/* ── PAGE VIEWS (sign-in, register, track, locator, help, checkout) ── */
+.pg-hero { min-height: 160px; display: flex; align-items: flex-end; padding: 0 48px 32px; }
+.pg-hero-dark  { background: #0d0d0d; }
+.pg-hero-light { background: #f0ebe4; border-bottom: 1px solid rgba(0,0,0,.07); }
+.pg-hero-inner { max-width: 800px; }
+.pg-eyebrow { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 6px; color: var(--gold); }
+.pg-h1 { font-family:'Barlow Condensed',sans-serif; font-size: 48px; font-weight: 900; line-height: 1; color: #fff; text-transform: uppercase; }
+.pg-h1.dark { color: #1a1a1a; }
+.pg-wrap { max-width: 1100px; margin: 0 auto; padding: 40px 24px 60px; }
+.pg-narrow { max-width: 520px; }
+
+/* ── AUTH CARDS ─────────────────────────────────────────────────── */
+.auth-card { background: #fff; border: 1px solid #e8e8e8; border-radius: 8px; padding: 36px; box-shadow: 0 4px 24px rgba(0,0,0,.06); }
+.auth-form { display: flex; flex-direction: column; gap: 18px; }
+.af-field { display: flex; flex-direction: column; gap: 6px; }
+.af-field label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: #555; }
+.af-field input, .af-field textarea, .af-field select { padding: 11px 13px; border: 1px solid #ddd; border-radius: 4px; font-size: 14px; font-family: inherit; color: #1a1a1a; outline: none; transition: border-color .2s; background: #fff; }
+.af-field input:focus, .af-field textarea:focus, .af-field select:focus { border-color: var(--brown); }
+.af-field textarea { resize: vertical; }
+.af-hint { font-size: 11px; color: #aaa; margin-top: 4px; }
+.af-hint a { color: var(--brown); }
+.af-row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.af-check { display: flex; gap: 9px; align-items: flex-start; font-size: 13px; color: #555; }
+.af-check input { margin-top: 2px; accent-color: var(--brown); }
+.af-check a { color: var(--brown); }
+.af-err { font-size: 12px; color: var(--red); min-height: 16px; }
+.af-btn { display: inline-block; padding: 13px 24px; background: var(--brown); color: #fff; font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; border-radius: 4px; transition: background .2s; border: 2px solid var(--brown); cursor: pointer; }
+.af-btn:hover { background: #7a3b10; border-color: #7a3b10; }
+.af-btn-ghost { background: transparent; color: var(--brown); }
+.af-btn-ghost:hover { background: #f5ede6; }
+.af-btn-sm { padding: 9px 18px; font-size: 11px; }
+.af-btn-link { background: none; border: none; color: var(--brown); font-size: 12px; text-decoration: underline; cursor: pointer; padding: 0; }
+.auth-switch { text-align: center; font-size: 13px; color: #888; margin-top: 20px; }
+.auth-switch a { color: var(--brown); font-weight: 700; }
+
+/* ── ACCOUNT ────────────────────────────────────────────────────── */
+.acct-grid { display: grid; grid-template-columns: 200px 1fr; gap: 36px; }
+.acct-nav { display: flex; flex-direction: column; gap: 4px; }
+.acct-nav-btn { text-align: left; padding: 11px 14px; border-radius: 5px; font-size: 13px; font-weight: 600; color: #555; transition: background .15s, color .15s; }
+.acct-nav-btn:hover { background: #f5f0ea; color: #1a1a1a; }
+.acct-nav-btn.on { background: var(--brown); color: #fff; }
+.acct-nav-btn.danger { color: var(--red); margin-top: 12px; }
+.acct-panel { background: #fff; border: 1px solid #e8e8e8; border-radius: 8px; padding: 28px; }
+.acct-ph { font-family:'Barlow Condensed',sans-serif; font-size: 22px; font-weight: 900; text-transform: uppercase; margin-bottom: 20px; color: #1a1a1a; }
+.acct-detail-form { max-width: 460px; display: flex; flex-direction: column; gap: 16px; }
+.addr-card { border: 1px solid #e8e8e8; border-radius: 6px; padding: 16px 20px; font-size: 13px; color: #555; line-height: 1.7; display: flex; justify-content: space-between; align-items: flex-start; }
+.addr-card strong { color: #1a1a1a; display: block; margin-bottom: 4px; }
+.order-row-mini { display: flex; align-items: center; gap: 14px; padding: 14px 0; border-bottom: 1px solid #f0f0f0; }
+.order-row-mini img { width: 52px; height: 52px; object-fit: contain; border: 1px solid #f0f0f0; border-radius: 4px; }
+.orm-info { flex: 1; }
+.orm-info strong { font-size: 13px; display: block; }
+.orm-info span { font-size: 11px; color: #888; }
+.orm-status { font-size: 11px; font-weight: 800; padding: 3px 8px; border-radius: 3px; }
+.orm-status.delivered { background: #dcfce7; color: #166534; }
+.orm-status.transit   { background: #fef9c3; color: #854d0e; }
+
+/* ── TRACK ORDER ────────────────────────────────────────────────── */
+.track-card { background: #fff; border: 1px solid #e8e8e8; border-radius: 8px; padding: 36px; box-shadow: 0 4px 24px rgba(0,0,0,.06); }
+.track-intro { font-size: 14px; color: #666; line-height: 1.7; margin-bottom: 22px; }
+.track-input-row { display: flex; gap: 10px; margin-bottom: 14px; }
+.track-input-row input { flex: 1; padding: 12px 14px; border: 1px solid #ddd; border-radius: 4px; font-size: 15px; font-family:'Barlow Condensed',sans-serif; font-weight: 700; letter-spacing: .08em; outline: none; text-transform: uppercase; }
+.track-input-row input:focus { border-color: var(--brown); }
+.track-go { flex-shrink: 0; }
+.track-demo-hint { font-size: 12px; color: #aaa; margin-bottom: 24px; }
+.track-chip { display: inline-block; padding: 2px 8px; background: #f0ebe4; border-radius: 3px; color: var(--brown); font-weight: 700; cursor: pointer; margin: 0 3px; font-size: 12px; }
+.track-chip:hover { background: var(--brown); color: #fff; }
+.track-result-box { margin-top: 22px; border-top: 1px solid #f0f0f0; padding-top: 22px; }
+.tr-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 22px; flex-wrap: wrap; gap: 12px; }
+.tr-num { font-family:'Barlow Condensed',sans-serif; font-size: 22px; font-weight: 900; }
+.tr-status-chip { font-size: 11px; font-weight: 800; padding: 5px 12px; border-radius: 3px; text-transform: uppercase; letter-spacing: .06em; }
+.ts-dispatched { background: #fef9c3; color: #854d0e; }
+.ts-transit    { background: #dbeafe; color: #1e40af; }
+.ts-delivered  { background: #dcfce7; color: #166534; }
+.ts-processing { background: #f3f4f6; color: #374151; }
+.track-timeline { position: relative; padding-left: 28px; }
+.track-timeline::before { content:''; position: absolute; left: 8px; top: 8px; bottom: 8px; width: 2px; background: #e8e8e8; }
+.tl-step { position: relative; margin-bottom: 20px; }
+.tl-step::before { content:''; position: absolute; left: -24px; top: 4px; width: 14px; height: 14px; border-radius: 50%; background: #ddd; border: 2px solid #fff; box-shadow: 0 0 0 1px #ddd; }
+.tl-step.done::before { background: var(--brown); box-shadow: 0 0 0 1px var(--brown); }
+.tl-step.active::before { background: var(--green); box-shadow: 0 0 0 1px var(--green); animation: pulse 1.5s infinite; }
+@keyframes pulse { 0%,100%{box-shadow:0 0 0 1px var(--green),0 0 0 4px rgba(132,255,0,.15);} 50%{box-shadow:0 0 0 1px var(--green),0 0 0 7px rgba(132,255,0,.0);} }
+.tl-step .tl-label { font-size: 13px; font-weight: 700; color: #1a1a1a; }
+.tl-step .tl-date  { font-size: 11px; color: #aaa; margin-top: 2px; }
+.tl-step.pending .tl-label { color: #ccc; }
+.tr-items { margin-top: 20px; border-top: 1px solid #f0f0f0; padding-top: 16px; }
+.tr-item { display: flex; gap: 12px; align-items: center; margin-bottom: 12px; font-size: 13px; color: #555; }
+.tr-item img { width: 44px; height: 44px; object-fit: contain; border: 1px solid #f0f0f0; border-radius: 4px; }
+
+/* ── STORE LOCATOR ──────────────────────────────────────────────── */
+.loc-search-row { max-width: 480px; margin-bottom: 28px; }
+.loc-search-row input { width: 100%; padding: 12px 16px; border: 1px solid #ddd; border-radius: 4px; font-size: 14px; font-family: inherit; outline: none; }
+.loc-search-row input:focus { border-color: var(--brown); }
+.loc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 18px; }
+.loc-card { background: #fff; border: 1px solid #e8e8e8; border-radius: 8px; padding: 22px; transition: box-shadow .2s; }
+.loc-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,.08); }
+.loc-card-hd { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+.loc-name { font-family:'Barlow Condensed',sans-serif; font-size: 18px; font-weight: 900; text-transform: uppercase; }
+.loc-type { font-size: 10px; font-weight: 800; padding: 3px 8px; border-radius: 3px; text-transform: uppercase; }
+.lt-both   { background: #1a1a1a; color: var(--green); }
+.lt-sport  { background: #001133; color: var(--green); }
+.lt-formal { background: #f0ebe4; color: var(--brown); border: 1px solid rgba(139,69,19,.2); }
+.loc-addr { font-size: 13px; color: #666; line-height: 1.6; margin-bottom: 12px; }
+.loc-hours { font-size: 12px; color: #888; margin-bottom: 12px; }
+.loc-hours strong { color: #1a1a1a; font-size: 11px; text-transform: uppercase; letter-spacing: .05em; display: block; margin-bottom: 3px; }
+.loc-phone { font-size: 12px; color: var(--brown); font-weight: 700; }
+.loc-btn { margin-top: 14px; width: 100%; padding: 9px; text-align: center; border: 1px solid var(--brown); color: var(--brown); font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; border-radius: 4px; transition: background .2s, color .2s; }
+.loc-btn:hover { background: var(--brown); color: #fff; }
+
+/* ── HELP / FAQ ─────────────────────────────────────────────────── */
+.help-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+.help-h2 { font-family:'Barlow Condensed',sans-serif; font-size: 26px; font-weight: 900; text-transform: uppercase; margin-bottom: 22px; }
+.faq-item { border-bottom: 1px solid #f0f0f0; }
+.faq-q { width: 100%; text-align: left; padding: 16px 0; font-size: 14px; font-weight: 700; color: #1a1a1a; display: flex; justify-content: space-between; gap: 12px; }
+.faq-q .faq-icon { flex-shrink: 0; color: var(--brown); }
+.faq-a { font-size: 13px; color: #666; line-height: 1.7; padding-bottom: 16px; display: none; }
+.faq-a.open { display: block; }
+.success-box { text-align: center; padding: 36px; background: #f5fbef; border: 1px solid #c3e6a0; border-radius: 8px; }
+.success-ico { font-size: 32px; background: #22c55e; color: #fff; width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 14px; }
+.success-box h3 { font-size: 20px; font-weight: 800; margin-bottom: 8px; }
+.success-box p { font-size: 14px; color: #555; }
+.help-contact-alt { margin-top: 28px; border-top: 1px solid #f0f0f0; padding-top: 22px; display: flex; flex-direction: column; gap: 14px; }
+.contact-method { display: flex; align-items: flex-start; gap: 12px; font-size: 13px; }
+.cm-ico { font-size: 20px; flex-shrink: 0; }
+.contact-method strong { display: block; font-size: 13px; margin-bottom: 2px; }
+.contact-method p { color: #888; }
+
+/* ── CHECKOUT ───────────────────────────────────────────────────── */
+.co-steps { display: flex; align-items: center; gap: 6px; margin-bottom: 32px; padding: 20px 0; border-bottom: 1px solid #f0f0f0; }
+.co-step { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: #bbb; }
+.co-step span { width: 24px; height: 24px; border-radius: 50%; background: #e8e8e8; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 900; color: #aaa; }
+.co-step.on { color: #1a1a1a; }
+.co-step.on span { background: var(--brown); color: #fff; }
+.co-step.done { color: #22c55e; }
+.co-step.done span { background: #22c55e; color: #fff; }
+.co-step-arrow { color: #ccc; font-size: 18px; }
+.co-layout { display: grid; grid-template-columns: 1fr 340px; gap: 36px; align-items: flex-start; }
+.co-main { background: #fff; border: 1px solid #e8e8e8; border-radius: 8px; padding: 30px; }
+.co-ph { font-family:'Barlow Condensed',sans-serif; font-size: 22px; font-weight: 900; text-transform: uppercase; margin-bottom: 22px; }
+.co-subh { font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: .05em; margin: 22px 0 12px; color: #555; }
+.del-options { display: flex; flex-direction: column; gap: 10px; }
+.del-opt { display: flex; align-items: center; gap: 14px; padding: 14px 16px; border: 1px solid #ddd; border-radius: 6px; cursor: pointer; transition: border-color .2s; }
+.del-opt.on, .del-opt:has(input:checked) { border-color: var(--brown); background: #fdf8f4; }
+.del-opt input { accent-color: var(--brown); }
+.del-txt { flex: 1; font-size: 13px; line-height: 1.4; }
+.del-txt strong { display: block; }
+.del-txt span { font-size: 11px; color: #888; }
+.del-price { font-size: 13px; font-weight: 800; color: var(--brown); }
+.card-icons { font-size: 13px; color: #888; margin-bottom: 18px; padding: 10px 14px; background: #f9f9f9; border-radius: 4px; }
+.secure-note { font-size: 12px; color: #888; margin-top: 14px; line-height: 1.6; }
+.secure-note a { color: var(--brown); }
+.co-summary { background: #fff; border: 1px solid #e8e8e8; border-radius: 8px; padding: 24px; position: sticky; top: 80px; }
+.co-sum-h { font-family:'Barlow Condensed',sans-serif; font-size: 16px; font-weight: 900; text-transform: uppercase; margin-bottom: 16px; }
+.co-sum-item { display: flex; gap: 12px; margin-bottom: 14px; }
+.co-sum-item img { width: 48px; height: 48px; object-fit: contain; border: 1px solid #f0f0f0; border-radius: 4px; flex-shrink: 0; }
+.co-sum-item-info { flex: 1; font-size: 12px; }
+.co-sum-item-info strong { display: block; font-size: 13px; margin-bottom: 2px; }
+.co-sum-item-info span { color: #888; }
+.co-sum-item-price { font-size: 13px; font-weight: 800; flex-shrink: 0; }
+.co-sum-divider { border: none; border-top: 1px solid #f0f0f0; margin: 14px 0; }
+.co-sum-row { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 8px; color: #666; }
+.co-sum-total { display: flex; justify-content: space-between; font-size: 16px; font-weight: 800; margin-top: 10px; color: #1a1a1a; }
+.co-review-block { background: #f9f9f9; border-radius: 6px; padding: 16px; margin-bottom: 16px; font-size: 13px; color: #555; line-height: 1.7; }
+.co-review-block h4 { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; color: #888; margin-bottom: 8px; }
+.co-place-btn { background: #22c55e; border-color: #22c55e; font-size: 14px; padding: 15px 28px; }
+.co-place-btn:hover { background: #16a34a; border-color: #16a34a; }
+.order-confirm { text-align: center; padding: 20px 0; }
+.oc-tick { width: 72px; height: 72px; background: #22c55e; color: #fff; border-radius: 50%; font-size: 32px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; }
+.order-confirm h2 { font-family:'Barlow Condensed',sans-serif; font-size: 32px; font-weight: 900; text-transform: uppercase; margin-bottom: 10px; }
+.order-confirm p { font-size: 14px; color: #666; line-height: 1.6; max-width: 400px; margin: 0 auto 22px; }
+.oc-num { background: #f9f9f9; border: 1px solid #e8e8e8; border-radius: 6px; padding: 14px 20px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; font-size: 13px; }
+.oc-num strong { font-family:'Barlow Condensed',sans-serif; font-size: 20px; letter-spacing: .08em; color: var(--brown); }
+.oc-del { font-size: 13px; color: #888; margin: 16px 0; }
+.oc-actions { display: flex; gap: 12px; justify-content: center; margin-top: 24px; flex-wrap: wrap; }
+</style>
+</head>
+
+<body>
+
+<!-- ANNOUNCEMENT BAR -->
+<div class="ann-bar">
+  <div class="ann-track">
+    <span>🚚 Free Delivery Over £50</span><span style="opacity:.25;padding:0 0;">|</span>
+    <span>↩ Free Returns</span><span style="opacity:.25;padding:0 0;">|</span>
+    <span>🎓 10% Student Discount</span><span style="opacity:.25;padding:0 0;">|</span>
+    <span>🚚 Free Delivery Over £50</span><span style="opacity:.25;padding:0 0;">|</span>
+    <span>↩ Free Returns</span><span style="opacity:.25;padding:0 0;">|</span>
+    <span>🎓 10% Student Discount</span><span style="opacity:.25;padding:0 0;">|</span>
+    <span>🚚 Free Delivery Over £50</span><span style="opacity:.25;padding:0 0;">|</span>
+    <span>↩ Free Returns</span><span style="opacity:.25;padding:0 0;">|</span>
+    <span>🎓 10% Student Discount</span>
+  </div>
+</div>
+
+<!-- UTILITY NAV -->
+<div class="util-nav">
+  <div class="u-left">
+    <button onclick="goHome()">← Home</button>
+    <button class="u-green" onclick="goSport()">⚡ Sport Shop</button>
+    <button class="u-gold"  onclick="goFormal()">🎩 Formal Shop</button>
+  </div>
+  <div class="u-right">
+    <button id="btn-signin"   onclick="goPage('signin')">👤 Sign In</button>
+    <button id="btn-register" onclick="goPage('register')">📝 Register</button>
+    <button id="btn-account"  onclick="goPage('account')" style="display:none;">👤 My Account</button>
+    <button id="btn-signout"  onclick="signOut()" style="display:none;">← Sign Out</button>
+    <button onclick="goPage('track')">📦 Track Order</button>
+    <button onclick="goPage('locator')">📍 Store Locator</button>
+    <button onclick="goPage('help')">❓ Help</button>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="header">
+  <button class="logo" onclick="goHome()"><span class="acc">CL</span>ERKS</button>
+  <nav class="main-nav">
+    <div id="nav-home">
+      <a class="nav-a sale" href="#">Sale</a>
+      <a class="nav-a" href="#">Brands</a>
+      <a class="nav-a" href="#" onclick="goSport();return false;">Sport</a>
+      <a class="nav-a" href="#" onclick="goFormal();return false;">Formal</a>
+      <a class="nav-a" href="#">Men</a>
+      <a class="nav-a" href="#">Women</a>
+      <a class="nav-a" href="#">Kids</a>
+      <a class="nav-a" href="#">Accessories</a>
+    </div>
+    <div id="nav-sport" style="display:none;">
+      <a class="nav-a sale" href="#">Sale</a>
+      <a class="nav-a" href="#" onclick="filterS('Running');return false;">Running</a>
+      <a class="nav-a" href="#" onclick="filterS('Training');return false;">Training</a>
+      <a class="nav-a" href="#" onclick="filterS('Basketball');return false;">Basketball</a>
+      <a class="nav-a" href="#" onclick="filterS('Walking');return false;">Walking</a>
+      <a class="nav-a" href="#" onclick="filterS('Lifestyle');return false;">Lifestyle</a>
+      <a class="nav-a" href="#" onclick="filterS('Outdoor');return false;">Outdoor</a>
+    </div>
+    <div id="nav-formal" style="display:none;">
+      <a class="nav-a sale" href="#">Sale</a>
+      <a class="nav-a" href="#" onclick="filterF('Oxford Shoes');return false;">Oxford</a>
+      <a class="nav-a" href="#" onclick="filterF('Derby Shoes');return false;">Derby</a>
+      <a class="nav-a" href="#" onclick="filterF('Loafers');return false;">Loafers</a>
+      <a class="nav-a" href="#" onclick="filterF('Smart Casual');return false;">Smart Casual</a>
+      <a class="nav-a" href="#" onclick="filterF('Workwear');return false;">Workwear</a>
+      <a class="nav-a" href="#" onclick="filterF('School Shoes');return false;">School Shoes</a>
+    </div>
+  </nav>
+  <div class="icon-row">
+    <button class="icon-btn">👤</button>
+    <button class="icon-btn" onclick="openFavorites()">🤍 <span class="bdg" id="wish-bdg" style="display:none;">0</span></button>
+    <button class="icon-btn" onclick="openCart()">🛍️ <span class="bdg" id="cart-bdg" style="display:none;">0</span></button>
+  </div>
+</header>
+
+
+<!-- ═══════════ HOME VIEW ═══════════ -->
+<main id="view-home">
+
+  <section class="split-hero">
+    <div class="hero-panel sport-panel" onclick="goSport()">
+      <img class="hero-bg" src="https://images.unsplash.com/photo-1571008887538-b36bb32f4571?w=1200&h=900&fit=crop&auto=format" alt="Athlete" />
+      <div class="hero-grad sg"></div>
+      <div class="hero-shadow-dark"></div>
+      <div class="hover-outline"></div>
+      <div class="hero-txt">
+        <span class="hlabel sl">
+          ⚡<span class="new-tag">NEW</span> Sport Collection
+        </span>
+        <h1 class="hero-h1 sh1">Move<br><em class="cg">Faster</em></h1>
+        <p class="hero-sub">Performance footwear from our latest sport collections.</p>
+        <span class="hero-cta scta">Shop Sport →</span>
+      </div>
+    </div>
+    <div class="or-badge">OR</div>
+    <div class="hero-panel formal-panel" onclick="goFormal()">
+      <img class="hero-bg" src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=1200&h=900&fit=crop&auto=format" alt="Professional" />
+      <div class="hero-grad fg"></div>
+      <div class="hero-shadow-warm"></div>
+      <div class="hover-outline"></div>
+      <div class="hero-txt r">
+        <span class="hlabel fl">🎩 Formal Collection</span>
+        <h1 class="hero-h1 fh1">Step<br><em class="co">Smarter</em></h1>
+        <p class="hero-sub">Premium leather craftsmanship for the professional.</p>
+        <span class="hero-cta fcta">Shop Formal →</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="brand-strip">
+    <div class="brand-track">
+      <span>CLERKS Velocity</span><span>Clerks Aura</span><span>Clerks Original</span><span>Oxford Collection</span><span>CLERKS</span>
+      <span>CLERKS Velocity</span><span>Clerks Aura</span><span>Clerks Original</span><span>Oxford Collection</span><span>CLERKS</span>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-hdr">
+      <div>
+        <span class="eyebrow cr">Summer Sale</span>
+        <h2 class="sec-h2">Up to <span class="cr">50% Off</span></h2>
+      </div>
+      <a href="#" class="see-all">View All Sale →</a>
+    </div>
+    <div class="grid-4" id="sale-grid"></div>
+  </div>
+
+  <div class="promo-row">
+    <div class="promo p-sport" onclick="goSport()">
+      <img src="https://images.unsplash.com/photo-1556906781-9a412961a28c?w=800&h=500&fit=crop&auto=format" alt="Sport" />
+      <div class="p-txt">
+        <span class="hlabel sl">New Arrivals</span>
+        <h3 class="p-h3">Latest Trainers<br>Just Dropped</h3>
+        <span class="p-lnk cg">Shop Sport →</span>
+      </div>
+    </div>
+    <div class="promo p-formal" onclick="goFormal()">
+      <img src="https://images.unsplash.com/photo-1614252369475-531eba835eb1?w=800&h=500&fit=crop&auto=format" alt="Formal" />
+      <div class="p-txt">
+        <span class="hlabel fl">Premium Leather</span>
+        <h3 class="p-h3 fm">Crafted for<br>the Professional</h3>
+        <span class="p-lnk" style="color:var(--brown)">Shop Formal →</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="feats">
+    <div class="feat"><div class="feat-ico">🚚</div><h4>Free Delivery</h4><p>On orders over £50</p></div>
+    <div class="feat"><div class="feat-ico">↩</div><h4>Free Returns</h4><p>No questions asked</p></div>
+    <div class="feat"><div class="feat-ico">🎓</div><h4>Student Discount</h4><p>10% off with ID</p></div>
+    <div class="feat"><div class="feat-ico">❓</div><h4>Expert Help</h4><p>7 days a week</p></div>
+  </div>
+
+  <footer>
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="foot-logo">CLERKS</div>
+        <p>Where sport meets style. Two worlds, one brand.</p>
+        <div class="soc-row">
+          <button class="soc-btn">📷</button><button class="soc-btn">👍</button>
+          <button class="soc-btn">🐦</button><button class="soc-btn">▶</button>
+        </div>
+      </div>
+      <div class="foot-col"><h4>Shop</h4><a href="#">Sport</a><a href="#">Formal</a><a href="#">Sale</a><a href="#">New In</a></div>
+      <div class="foot-col"><h4>Help</h4><a href="#">Track Order</a><a href="#">Returns</a><a href="#">Delivery Info</a><a href="#">Size Guide</a></div>
+      <div class="foot-col"><h4>Company</h4><a href="#">About</a><a href="#">Careers</a><a href="#">Press</a><a href="#">Sustainability</a></div>
+    </div>
+    <div class="foot-btm">
+      <p>© 2024 Clerks Footwear Ltd.</p>
+      <div><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Cookies</a></div>
+    </div>
+  </footer>
+</main>
+
+
+<!-- ═══════════ SPORT VIEW ═══════════ -->
+<main id="view-sport" style="display:none;">
+  <div class="view-hero vh-sport">
+    <img src="https://images.unsplash.com/photo-1571008887538-b36bb32f4571?w=1400&h=600&fit=crop&auto=format" alt="Sport" />
+    <div class="vh-txt">
+      <span class="hlabel sl">Sport Shop</span>
+      <h1 class="vh-h1 vh-hs">Built to <em class="cg">Perform</em></h1>
+      <p>Top-rated performance footwear from the world's leading brands.</p>
+    </div>
+  </div>
+  <div class="pill-row sp-pills" id="sp-pills">
+    <button class="pill pill-s on" onclick="filterS('All')">All</button>
+    <button class="pill pill-s" onclick="filterS('Running')">Running</button>
+    <button class="pill pill-s" onclick="filterS('Training')">Training</button>
+    <button class="pill pill-s" onclick="filterS('Basketball')">Basketball</button>
+    <button class="pill pill-s" onclick="filterS('Walking')">Walking</button>
+    <button class="pill pill-s" onclick="filterS('Lifestyle')">Lifestyle</button>
+    <button class="pill pill-s" onclick="filterS('Outdoor')">Outdoor</button>
+  </div>
+  <div class="shop">
+    <aside class="sidebar sb-s" id="sb-sport">
+      <button class="sb-close-btn" onclick="closeFilter()" aria-label="Close filters">✕</button>
+      <h3 class="sb-title">Filter</h3>
+      <div class="sb-search-wrap">
+        <h4>Search</h4>
+        <div class="sb-search-inp">
+          <input type="text" id="s-search" placeholder="e.g. velocity, runner…"
+                 oninput="onSSearch(this)" autocomplete="off" />
+          <button class="sb-search-clear" id="s-search-clear" onclick="clearSSearch()" title="Clear search">✕</button>
+        </div>
+      </div>
+      <div class="fb">
+        <h4>Brand</h4>
+        <label><input type="checkbox" value="Clerks Velocity"        onchange="applyS()"> Clerks Velocity</label>
+        <label><input type="checkbox" value="Clerks Aura"      onchange="applyS()"> Clerks Aura</label>
+        <label><input type="checkbox" value="Clerks Apex Runner"       onchange="applyS()"> Clerks Apex Runner</label>
+        <label><input type="checkbox" value="Clerks Original"        onchange="applyS()"> Clerks Original</label>
+        <label><input type="checkbox" value="Clerks Stride Pro" onchange="applyS()"> Clerks Stride Pro</label>
+      </div>
+      <div class="fb">
+        <h4>Max Price</h4>
+        <input type="range" min="30" max="200" value="200" id="s-rng" class="rng" oninput="document.getElementById('s-rl').textContent=this.value;applyS()" />
+        <p class="rng-lbl">Up to £<span id="s-rl">200</span></p>
+      </div>
+      <div class="fb">
+        <h4>Sort By</h4>
+        <select id="s-srt" class="fsel" onchange="applyS()">
+          <option value="featured">Featured</option>
+          <option value="price-asc">Price: Low → High</option>
+          <option value="price-desc">Price: High → Low</option>
+          <option value="rating">Top Rated</option>
+          <option value="discount">Biggest Discount</option>
+        </select>
+      </div>
+      <div class="fb"><label><input type="checkbox" id="s-sale" onchange="applyS()"> Sale Items Only</label></div>
+      <button class="clr-btn" onclick="clearS()">Clear All Filters</button>
+    </aside>
+    <div class="prod-area">
+      <button class="filter-toggle-btn" onclick="openFilterS()">&#9903; Filter</button>
+      <div class="res-bar"><span id="s-cnt">20 Products</span><span class="ftags" id="s-tags"></span></div>
+      <div class="prod-grid" id="s-grid"></div>
+      <p class="no-res" id="s-none" style="display:none;">No products found. <button onclick="clearS()">Clear filters</button></p>
+    </div>
+  </div>
+</main>
+
+
+<!-- ═══════════ FORMAL VIEW ═══════════ -->
+<main id="view-formal" style="display:none;">
+  <div class="view-hero vh-formal">
+    <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=1400&h=600&fit=crop&auto=format" alt="Formal" />
+    <div class="vh-txt fm">
+      <span class="hlabel fl">The Formal Edit</span>
+      <h1 class="vh-h1 vh-hf">Crafted with <em class="co">Purpose</em></h1>
+      <p>Premium leather shoes for the modern professional.</p>
+    </div>
+  </div>
+  <div class="pill-row fm-pills" id="fm-pills">
+    <button class="pill pill-f on" onclick="filterF('All')">All</button>
+    <button class="pill pill-f" onclick="filterF('Oxford Shoes')">Oxford Shoes</button>
+    <button class="pill pill-f" onclick="filterF('Derby Shoes')">Derby Shoes</button>
+    <button class="pill pill-f" onclick="filterF('Loafers')">Loafers</button>
+    <button class="pill pill-f" onclick="filterF('Smart Casual')">Smart Casual</button>
+    <button class="pill pill-f" onclick="filterF('Workwear')">Workwear</button>
+    <button class="pill pill-f" onclick="filterF('School Shoes')">School Shoes</button>
+  </div>
+  <div class="shop">
+    <aside class="sidebar sb-f" id="sb-formal">
+      <button class="sb-close-btn" onclick="closeFilter()" aria-label="Close filters">✕</button>
+      <h3 class="sb-title">Refine</h3>
+      <div class="sb-search-wrap">
+        <h4>Search</h4>
+        <div class="sb-search-inp">
+          <input type="text" id="f-search" placeholder="e.g. oxford, chelsea…"
+                 oninput="onFSearch(this)" autocomplete="off" />
+          <button class="sb-search-clear" id="f-search-clear" onclick="clearFSearch()" title="Clear search">✕</button>
+        </div>
+      </div>
+      <div class="fb">
+        <h4>Colour</h4>
+        <div class="sw-row">
+          <button class="sw" style="background:#1a1a1a;" title="Black"  data-col="Black"  onclick="toggleCol(this)"></button>
+          <button class="sw" style="background:#6B4226;" title="Tan"    data-col="Tan"    onclick="toggleCol(this)"></button>
+          <button class="sw" style="background:#8B4513;" title="Brown"  data-col="Brown"  onclick="toggleCol(this)"></button>
+          <button class="sw" style="background:#C8A96E;" title="Cognac" data-col="Cognac" onclick="toggleCol(this)"></button>
+          <button class="sw" style="background:#2D3748;" title="Navy"   data-col="Navy"   onclick="toggleCol(this)"></button>
+          <button class="sw" style="background:#888;"    title="Grey"   data-col="Grey"   onclick="toggleCol(this)"></button>
+        </div>
+      </div>
+      <div class="fb">
+        <h4>Max Price</h4>
+        <input type="range" min="20" max="180" value="180" id="f-rng" class="rng" oninput="document.getElementById('f-rl').textContent=this.value;applyF()" />
+        <p class="rng-lbl">Up to £<span id="f-rl">180</span></p>
+      </div>
+      <div class="fb">
+        <h4>Sort By</h4>
+        <select id="f-srt" class="fsel" onchange="applyF()">
+          <option value="featured">Featured</option>
+          <option value="price-asc">Price: Low → High</option>
+          <option value="price-desc">Price: High → Low</option>
+          <option value="rating">Top Rated</option>
+        </select>
+      </div>
+      <div class="fb">
+        <h4>Width Fitting</h4>
+        <label><input type="checkbox" value="Standard"   onchange="applyF()"> Standard (D)</label>
+        <label><input type="checkbox" value="Wide"       onchange="applyF()"> Wide (E)</label>
+        <label><input type="checkbox" value="Extra Wide" onchange="applyF()"> Extra Wide (EE)</label>
+      </div>
+      <button class="clr-btn" onclick="clearF()">Clear All Filters</button>
+    </aside>
+    <div class="prod-area">
+      <button class="filter-toggle-btn" onclick="openFilterF()">&#9903; Refine</button>
+      <div class="res-bar"><span id="f-cnt">16 Products</span><span class="ftags" id="f-tags"></span></div>
+      <div class="prod-grid" id="f-grid"></div>
+      <p class="no-res" id="f-none" style="display:none;">No products found. <button onclick="clearF()">Clear filters</button></p>
+    </div>
+  </div>
+  <div class="promise">
+    <span class="hlabel fl">Our Promise</span>
+    <h3 class="promise-h3">Every pair, a work of craft</h3>
+    <p>Premium full-grain leather, hand-stitched soles, lasting comfort from morning to evening.</p>
+    <div class="promise-chks">
+      <span>Genuine Leather</span><span>Goodyear Welt</span><span>Cushioned Insole</span><span>2-Year Warranty</span>
+    </div>
+  </div>
+</main>
+
+
+<!-- ═══════════ PRODUCT MODAL ═══════════ -->
+<div class="modal-bg" id="modal-bg" onclick="bgClick(event)">
+  <div class="modal-box">
+    <button class="m-close" onclick="closeModal()">✕</button>
+    <div class="m-layout">
+      <div class="m-img-col">
+        <img id="m-img" src="" alt="" class="m-main-img" />
+        <div class="m-thumbs" id="m-thumbs"></div>
+      </div>
+      <div class="m-info">
+        <p class="m-brand" id="m-brand"></p>
+        <h2 class="m-name"  id="m-name"></h2>
+        <div class="m-stars" id="m-stars"></div>
+        <div class="m-pr">
+          <span class="m-price" id="m-price"></span>
+          <span class="m-was"   id="m-was"></span>
+          <span class="m-disc"  id="m-disc"></span>
+        </div>
+        <div>
+          <p class="pk-lbl">Colour: <strong id="m-col-lbl">Please select</strong></p>
+          <div class="col-row" id="m-cols"></div>
+        </div>
+        <div>
+          <div class="sz-hdr">
+            <p class="pk-lbl">Size (UK): <strong id="m-sz-lbl">Please select</strong></p>
+            <a href="#" class="sz-guide">Size Guide</a>
+          </div>
+          <div class="sz-grid" id="m-sizes"></div>
+        </div>
+        <p class="m-desc" id="m-desc"></p>
+        <ul class="m-feats" id="m-feats"></ul>
+        <button class="atb-btn" onclick="addFromModal()">Add to Basket</button>
+        <p class="m-del">🚚 Free delivery — order by 9pm for next day</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════ CART DRAWER ═══════════ -->
+<div class="cart-shade" id="cart-shade" onclick="closeCart()"></div>
+<div class="cart-draw" id="cart-draw">
+  <div class="cart-hd">
+    <span id="cart-hdg">Your Basket (0)</span>
+    <button onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-list" id="cart-list"></div>
+  <div class="cart-ft" id="cart-ft" style="display:none;">
+    <div class="sub-row"><span>Subtotal</span><strong id="cart-tot">£0.00</strong></div>
+    <p class="fdel" id="cart-del" style="display:none;"></p>
+    <button class="co-btn" onclick="startCheckout()">Checkout</button>
+    <button class="ks-btn" onclick="closeCart()">Continue Shopping</button>
+  </div>
+  <div class="cart-empty" id="cart-empty"><p>🛍️</p><p>Your basket is empty</p></div>
+</div>
+
+
+<!-- search overlay removed -->
+
+
+<!-- ═══════════ SIGN IN VIEW ═══════════ -->
+<main id="view-signin" style="display:none;">
+  <div class="pg-hero pg-hero-dark">
+    <div class="pg-hero-inner">
+      <p class="pg-eyebrow">Welcome back</p>
+      <h1 class="pg-h1">Sign In</h1>
+    </div>
+  </div>
+  <div class="pg-wrap pg-narrow">
+    <div class="auth-card" id="signin-form-wrap">
+      <form class="auth-form" onsubmit="doSignIn(event)">
+        <div class="af-field">
+          <label>Email address</label>
+          <input type="email" id="si-email" placeholder="you@example.com" autocomplete="email" required />
+        </div>
+        <div class="af-field">
+          <label>Password</label>
+          <input type="password" id="si-pass" placeholder="Enter your password" autocomplete="current-password" required />
+          <p class="af-hint"><a href="#" onclick="goPage('track');return false;">Forgot your password?</a></p>
+        </div>
+        <p class="af-err" id="si-err"></p>
+        <button type="submit" class="af-btn">Sign In →</button>
+      </form>
+      <p class="auth-switch">Don't have an account? <a href="#" onclick="goPage('register');return false;">Register here</a></p>
+    </div>
+  </div>
+</main>
+
+
+<!-- ═══════════ REGISTER VIEW ═══════════ -->
+<main id="view-register" style="display:none;">
+  <div class="pg-hero pg-hero-dark">
+    <div class="pg-hero-inner">
+      <p class="pg-eyebrow">Join Clerks</p>
+      <h1 class="pg-h1">Create Account</h1>
+    </div>
+  </div>
+  <div class="pg-wrap pg-narrow">
+    <div class="auth-card" id="reg-form-wrap">
+      <form class="auth-form" onsubmit="doRegister(event)">
+        <div class="af-row2">
+          <div class="af-field">
+            <label>First name</label>
+            <input type="text" id="reg-fn" placeholder="First name" required />
+          </div>
+          <div class="af-field">
+            <label>Last name</label>
+            <input type="text" id="reg-ln" placeholder="Last name" required />
+          </div>
+        </div>
+        <div class="af-field">
+          <label>Email address</label>
+          <input type="email" id="reg-email" placeholder="you@example.com" autocomplete="email" required />
+        </div>
+        <div class="af-field">
+          <label>Password</label>
+          <input type="password" id="reg-pass" placeholder="At least 8 characters" minlength="8" required />
+        </div>
+        <div class="af-field">
+          <label>Confirm password</label>
+          <input type="password" id="reg-pass2" placeholder="Repeat password" required />
+        </div>
+        <div class="af-check">
+          <input type="checkbox" id="reg-terms" required />
+          <label for="reg-terms">I agree to the <a href="#">Terms &amp; Conditions</a> and <a href="#">Privacy Policy</a></label>
+        </div>
+        <div class="af-check">
+          <input type="checkbox" id="reg-news" />
+          <label for="reg-news">Send me offers, new arrivals and exclusive deals</label>
+        </div>
+        <p class="af-err" id="reg-err"></p>
+        <button type="submit" class="af-btn">Create Account →</button>
+      </form>
+      <p class="auth-switch">Already have an account? <a href="#" onclick="goPage('signin');return false;">Sign in</a></p>
+    </div>
+  </div>
+</main>
+
+
+<!-- ═══════════ ACCOUNT VIEW ═══════════ -->
+<main id="view-account" style="display:none;">
+  <div class="pg-hero pg-hero-dark">
+    <div class="pg-hero-inner">
+      <p class="pg-eyebrow" id="acct-eyebrow">Your Account</p>
+      <h1 class="pg-h1" id="acct-name">Welcome back</h1>
+    </div>
+  </div>
+  <div class="pg-wrap">
+    <div class="acct-grid">
+      <div class="acct-nav">
+        <button class="acct-nav-btn on" onclick="acctTab(this,'acct-orders')">My Orders</button>
+        <button class="acct-nav-btn" onclick="acctTab(this,'acct-details')">Personal Details</button>
+        <button class="acct-nav-btn" onclick="acctTab(this,'acct-addresses')">Addresses</button>
+        <button class="acct-nav-btn" onclick="acctTab(this,'acct-prefs')">Preferences</button>
+        <button class="acct-nav-btn danger" onclick="signOut()">Sign Out</button>
+      </div>
+      <div class="acct-panel">
+        <div id="acct-orders">
+          <h3 class="acct-ph">Recent Orders</h3>
+          <div id="acct-orders-list"></div>
+        </div>
+        <div id="acct-details" style="display:none;">
+          <h3 class="acct-ph">Personal Details</h3>
+          <div class="acct-detail-form">
+            <div class="af-row2">
+              <div class="af-field"><label>First name</label><input type="text" id="acct-fn" /></div>
+              <div class="af-field"><label>Last name</label><input type="text" id="acct-ln" /></div>
+            </div>
+            <div class="af-field"><label>Email</label><input type="email" id="acct-em" /></div>
+            <div class="af-field"><label>Phone</label><input type="tel" id="acct-ph-in" placeholder="+44 7000 000000" /></div>
+            <button class="af-btn af-btn-sm" onclick="alert('Details saved successfully.')">Save Changes</button>
+          </div>
+        </div>
+        <div id="acct-addresses" style="display:none;">
+          <h3 class="acct-ph">Saved Addresses</h3>
+          <div class="addr-card"><strong>Home</strong><p id="acct-addr"></p><button class="af-btn-link">Edit</button></div>
+        </div>
+        <div id="acct-prefs" style="display:none;">
+          <h3 class="acct-ph">Communication Preferences</h3>
+          <div class="af-check"><input type="checkbox" id="pref-email" checked /><label for="pref-email">Email newsletters &amp; offers</label></div>
+          <div class="af-check"><input type="checkbox" id="pref-sms" /><label for="pref-sms">SMS notifications</label></div>
+          <div class="af-check" style="margin-top:14px;"><input type="checkbox" id="pref-sport" checked /><label for="pref-sport">Sport store updates</label></div>
+          <div class="af-check"><input type="checkbox" id="pref-formal" checked /><label for="pref-formal">Formal store updates</label></div>
+          <button class="af-btn af-btn-sm" style="margin-top:18px;" onclick="alert('Preferences saved.')">Save Preferences</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+
+<!-- ═══════════ TRACK ORDER VIEW ═══════════ -->
+<main id="view-track" style="display:none;">
+  <div class="pg-hero pg-hero-light">
+    <div class="pg-hero-inner">
+      <p class="pg-eyebrow co">Delivery</p>
+      <h1 class="pg-h1 dark">Track Your Order</h1>
+    </div>
+  </div>
+  <div class="pg-wrap pg-narrow">
+    <div class="track-card">
+      <p class="track-intro">Enter your order number below to see the latest status. You can find your order number in your confirmation email.</p>
+      <div class="track-input-row">
+        <input type="text" id="track-input" placeholder="e.g. CLK-29418" oninput="this.value=this.value.toUpperCase()" />
+        <button class="af-btn track-go" onclick="doTrack()">Track →</button>
+      </div>
+      <p class="track-demo-hint">Demo order numbers: <span class="track-chip" onclick="setTrack('CLK-29418')">CLK-29418</span> <span class="track-chip" onclick="setTrack('CLK-30071')">CLK-30071</span> <span class="track-chip" onclick="setTrack('CLK-28854')">CLK-28854</span> <span class="track-chip" onclick="setTrack('CLK-31102')">CLK-31102</span></p>
+      <div id="track-result" style="display:none;"></div>
+    </div>
+  </div>
+</main>
+
+
+<!-- ═══════════ STORE LOCATOR VIEW ═══════════ -->
+<main id="view-locator" style="display:none;">
+  <div class="pg-hero pg-hero-light">
+    <div class="pg-hero-inner">
+      <p class="pg-eyebrow co">Visit Us</p>
+      <h1 class="pg-h1 dark">Store Locator</h1>
+    </div>
+  </div>
+  <div class="pg-wrap">
+    <div class="loc-search-row">
+      <input type="text" id="loc-input" placeholder="Enter town, city or postcode…" oninput="filterStores(this.value)" />
+    </div>
+    <div class="loc-grid" id="loc-grid"></div>
+  </div>
+</main>
+
+
+<!-- ═══════════ HELP VIEW ═══════════ -->
+<main id="view-help" style="display:none;">
+  <div class="pg-hero pg-hero-light">
+    <div class="pg-hero-inner">
+      <p class="pg-eyebrow co">Support</p>
+      <h1 class="pg-h1 dark">Help &amp; Contact</h1>
+    </div>
+  </div>
+  <div class="pg-wrap">
+    <div class="help-grid">
+      <div class="help-faq">
+        <h2 class="help-h2">Frequently Asked Questions</h2>
+        <div class="faq-list" id="faq-list"></div>
+      </div>
+      <div class="help-contact">
+        <h2 class="help-h2">Contact Us</h2>
+        <p style="font-size:13px;color:#888;margin-bottom:20px;">Our team typically responds within 2 business hours.</p>
+        <div id="help-form-wrap">
+          <form class="auth-form" onsubmit="doHelp(event)">
+            <div class="af-field">
+              <label>Name</label>
+              <input type="text" id="help-name" placeholder="Your full name" required />
+            </div>
+            <div class="af-field">
+              <label>Email</label>
+              <input type="email" id="help-email" placeholder="you@example.com" required />
+            </div>
+            <div class="af-field">
+              <label>Order number (optional)</label>
+              <input type="text" id="help-order" placeholder="e.g. CLK-29418" />
+            </div>
+            <div class="af-field">
+              <label>Subject</label>
+              <select id="help-subject" class="fsel">
+                <option value="">Select a topic…</option>
+                <option>Where is my order?</option>
+                <option>Return or exchange</option>
+                <option>Wrong item received</option>
+                <option>Product question</option>
+                <option>Size advice</option>
+                <option>Payment issue</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="af-field">
+              <label>Message</label>
+              <textarea id="help-msg" rows="5" placeholder="Tell us how we can help…" required></textarea>
+            </div>
+            <button type="submit" class="af-btn">Send Message →</button>
+          </form>
+        </div>
+        <div id="help-success" style="display:none;" class="success-box">
+          <div class="success-ico">✓</div>
+          <h3>Message received!</h3>
+          <p>Thanks for getting in touch. We'll reply to your email within 2 business hours.</p>
+          <button class="af-btn af-btn-sm" style="margin-top:16px;" onclick="resetHelp()">Send another message</button>
+        </div>
+        <div class="help-contact-alt">
+          <div class="contact-method"><span class="cm-ico">📞</span><div><strong>Phone</strong><p>0800 123 4567 · Mon–Sat 9am–6pm</p></div></div>
+          <div class="contact-method"><span class="cm-ico">💬</span><div><strong>Live Chat</strong><p>Available on this page during opening hours</p></div></div>
+          <div class="contact-method"><span class="cm-ico">📧</span><div><strong>Email</strong><p>support@clerksfootwear.co.uk</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+
+<!-- ═══════════ CHECKOUT VIEW ═══════════ -->
+<main id="view-checkout" style="display:none;">
+  <div class="pg-hero pg-hero-dark" style="min-height:120px;">
+    <div class="pg-hero-inner">
+      <h1 class="pg-h1" style="font-size:28px;">Secure Checkout</h1>
+    </div>
+  </div>
+  <div class="pg-wrap">
+    <!-- Step indicator -->
+    <div class="co-steps" id="co-steps">
+      <div class="co-step on" id="cstep-1"><span>1</span> Delivery</div>
+      <div class="co-step-arrow">›</div>
+      <div class="co-step" id="cstep-2"><span>2</span> Payment</div>
+      <div class="co-step-arrow">›</div>
+      <div class="co-step" id="cstep-3"><span>3</span> Confirm</div>
+    </div>
+    <div class="co-layout">
+      <!-- Left: step panels -->
+      <div class="co-main">
+        <!-- STEP 1: Delivery -->
+        <div id="co-panel-1">
+          <h2 class="co-ph">Delivery Details</h2>
+          <div class="af-row2">
+            <div class="af-field"><label>First name</label><input type="text" id="co-fn" placeholder="First name" /></div>
+            <div class="af-field"><label>Last name</label><input type="text" id="co-ln" placeholder="Last name" /></div>
+          </div>
+          <div class="af-field"><label>Email</label><input type="email" id="co-em" placeholder="you@example.com" /></div>
+          <div class="af-field"><label>Phone</label><input type="tel" id="co-ph" placeholder="+44 7000 000000" /></div>
+          <div class="af-field"><label>Address line 1</label><input type="text" id="co-a1" placeholder="House number and street" /></div>
+          <div class="af-field"><label>Address line 2 (optional)</label><input type="text" id="co-a2" placeholder="Apartment, suite, etc." /></div>
+          <div class="af-row2">
+            <div class="af-field"><label>City</label><input type="text" id="co-city" placeholder="City" /></div>
+            <div class="af-field"><label>Postcode</label><input type="text" id="co-pc" placeholder="SW1A 1AA" /></div>
+          </div>
+          <h3 class="co-subh">Delivery Method</h3>
+          <div class="del-options">
+            <label class="del-opt on" id="del-std">
+              <input type="radio" name="delivery" value="standard" checked onchange="updateDelivery(this)" />
+              <div class="del-txt"><strong>Standard Delivery</strong><span>3–5 working days</span></div>
+              <span class="del-price" id="del-price-std">FREE</span>
+            </label>
+            <label class="del-opt" id="del-exp">
+              <input type="radio" name="delivery" value="express" onchange="updateDelivery(this)" />
+              <div class="del-txt"><strong>Express Delivery</strong><span>Next working day</span></div>
+              <span class="del-price">£4.99</span>
+            </label>
+            <label class="del-opt" id="del-nd">
+              <input type="radio" name="delivery" value="nextday" onchange="updateDelivery(this)" />
+              <div class="del-txt"><strong>Next Day (order by 9pm)</strong><span>Guaranteed next working day</span></div>
+              <span class="del-price">£6.99</span>
+            </label>
+          </div>
+          <button class="af-btn" style="margin-top:22px;" onclick="coContinue(1)">Continue to Payment →</button>
+        </div>
+        <!-- STEP 2: Payment -->
+        <div id="co-panel-2" style="display:none;">
+          <h2 class="co-ph">Payment Details</h2>
+          <div class="card-icons">💳 Visa &nbsp; Mastercard &nbsp; Amex &nbsp; PayPal</div>
+          <div class="af-field"><label>Name on card</label><input type="text" id="co-cname" placeholder="As it appears on your card" /></div>
+          <div class="af-field">
+            <label>Card number</label>
+            <input type="text" id="co-cnum" placeholder="1234 5678 9012 3456" maxlength="19" oninput="fmtCard(this)" />
+          </div>
+          <div class="af-row2">
+            <div class="af-field"><label>Expiry</label><input type="text" id="co-exp" placeholder="MM / YY" maxlength="7" oninput="fmtExp(this)" /></div>
+            <div class="af-field"><label>CVV</label><input type="text" id="co-cvv" placeholder="123" maxlength="4" /></div>
+          </div>
+          <div class="af-check" style="margin-top:10px;">
+            <input type="checkbox" id="co-save-card" />
+            <label for="co-save-card">Save card for future purchases</label>
+          </div>
+          <div class="secure-note">🔒 Your payment details are encrypted and secure. We never store your full card number.</div>
+          <div style="display:flex;gap:10px;margin-top:22px;">
+            <button class="af-btn af-btn-ghost" onclick="coBack(2)">← Back</button>
+            <button class="af-btn" onclick="coContinue(2)">Review Order →</button>
+          </div>
+        </div>
+        <!-- STEP 3: Confirm -->
+        <div id="co-panel-3" style="display:none;">
+          <h2 class="co-ph">Review &amp; Confirm</h2>
+          <div id="co-review-delivery" class="co-review-block"></div>
+          <div id="co-review-items" class="co-review-block"></div>
+          <div class="secure-note">By placing your order you agree to our <a href="#">Terms &amp; Conditions</a> and <a href="#">Privacy Policy</a>.</div>
+          <div style="display:flex;gap:10px;margin-top:22px;">
+            <button class="af-btn af-btn-ghost" onclick="coBack(3)">← Back</button>
+            <button class="af-btn co-place-btn" onclick="placeOrder()">Place Order →</button>
+          </div>
+        </div>
+        <!-- STEP 4: Confirmation -->
+        <div id="co-panel-confirm" style="display:none;">
+          <div class="order-confirm">
+            <div class="oc-tick">✓</div>
+            <h2>Order Confirmed!</h2>
+            <p>Thank you for your order. Your confirmation has been sent to your email address.</p>
+            <div class="oc-num"><span>Order Number</span><strong id="oc-num"></strong></div>
+            <div id="oc-items"></div>
+            <div class="oc-del"><span id="oc-del-msg"></span></div>
+            <div class="oc-actions">
+              <button class="af-btn" onclick="goPage('track')">Track My Order</button>
+              <button class="af-btn af-btn-ghost" onclick="goHome()">Continue Shopping</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Right: order summary -->
+      <div class="co-summary" id="co-summary"></div>
+    </div>
+  </div>
+</main>
+
+
+<!-- ═══════════ FAVORITES VIEW ═══════════ -->
+<main id="view-favorites" style="display:none;">
+  <div class="pg-hero pg-hero-dark">
+    <div class="pg-hero-inner">
+      <p class="pg-eyebrow" style="color:var(--gold);">Your Wishlist</p>
+      <h1 class="pg-h1">Saved Items</h1>
+    </div>
+  </div>
+  <div class="pg-wrap">
+    <div id="fav-grid-wrap">
+      <div class="prod-grid" id="fav-grid"></div>
+      <div id="fav-empty" style="display:none;text-align:center;padding:60px 20px;">
+        <p style="font-size:40px;margin-bottom:16px;">🤍</p>
+        <p style="font-size:16px;font-weight:700;margin-bottom:8px;">No saved items yet</p>
+        <p style="font-size:14px;color:#888;margin-bottom:24px;">Click the heart on any shoe to save it here.</p>
+        <button class="af-btn" onclick="goHome()">Browse Shoes</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+
+<script>
+// ═══════════════════════════════════════════════════════════
+// PRODUCT DATA
+// Each object describes one shoe with all the details needed
+// to show it on a card and inside the detail modal.
+// ═══════════════════════════════════════════════════════════
+
+const SP = [
+  {id:"sp1", name:"Clerks Velocity",  brand:"Clerks Velocity",        cat:"Running",    price:89.99,  was:129.99, rating:4.8, rev:1842, img:"https://res.cloudinary.com/dxammbmnb/image/upload/v1782122979/magic_edit_TUFITlNaRl9wNHMjMSNkNzVlZWVjZTA5Njk4NGE3YWE0ZmYxOTAzNDBjZDk5ZiM4MjQjI1RSQU5TRk9STUFUSU9OX1JFUVVFU1Q_1_y6hadx.png",  cols:[{n:"Red",h:"#E53E3E"},{n:"White",h:"#eee",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782137773/white_nike_tpbikl.png"},{n:"Navy",h:"#003080",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782127042/Blue_nike_a1ryur.png"}], sizes:[6,7,7.5,8,8.5,9,9.5,10,11,12], oos:[7.5,12], desc:"Responsive cushioning for everyday training and long runs.", feats:["React foam midsole","Waffle outsole","Flywire lacing","Breathable mesh"]},
+  {id:"sp2", name:"Clerks Aura",         brand:"Clerks Aura",      cat:"Running",    price:109.99, was:159.99, rating:4.7, rev:2103, img:"https://res.cloudinary.com/dxammbmnb/image/upload/v1782296365/Blue_Aura_sakozx.png", cols:[{n:"Black",h:"#1a1a1a",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782296365/Blue_Aura_sakozx.png"},{n:"Pink/White",h:"#eee",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782296363/pink_aura_dz7fml.png"},{n:"Blue",h:"#0055CC",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782296364/Black_Aura_fhzknp.png"}], sizes:[6,7,8,9,10,11,12], oos:[], desc:"Infinite energy return from BOOST midsole with Primeknit+ upper.", feats:["BOOST midsole","Primeknit+ upper","Continental rubber","Linear Energy Push"]},
+  {id:"sp3", name:"Clerks Apex Runner",         brand:"Clerks Apex Runner",       cat:"Running",    price:99.99,  was:139.99, rating:4.9, rev:987,  img:"https://res.cloudinary.com/dxammbmnb/image/upload/v1782136627/clerks_original_blue_hwmjgg.png",  cols:[{n:"Blue",h:"#1E90FF",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782136627/clerks_original_blue_hwmjgg.png"},{n:"Black",h:"#1a1a1a", img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782136627/clerks_original_black_jddt5r.png"},{n:"Red",h:"#CC0000",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782123546/magic_edit_TUFITlNobi1lTTQjMSNhZDJlOGU2ODNlZGE0N2ExZDU3ZjA3YThjOGNmYTY5MSM1OTAjI1RSQU5TRk9STUFUSU9OX1JFUVVFU1Q_1_mpnlr0.png"}], sizes:[6,7,8,9,10,11,12], oos:[], desc:"Premium stability with GEL cushioning and LYTE TRUSS support.", feats:["GEL cushioning","LYTE TRUSS stability","FF BLAST+ midsole","Engineered mesh"]},
+  {id:"sp4", name:"Clerks Stride Pro",  brand:"Clerks Stride Pro", cat:"Running",    price:79.99,  was:119.99, rating:4.6, rev:654,  img:"https://res.cloudinary.com/dxammbmnb/image/upload/v1782138169/clerks_stride_pro_sea_salt_b7kitj.png",  cols:[{n:"Sea Salt",h:"#B8D4C8",img:"https://res.cloudinary.com/dxammbmnb/image/upload/v1782138169/clerks_stride_pro_sea_salt_b7kitj.png"},{n:"Black",h:"#2D2D2D",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782123956/magic_edit_TUFITlNsTUw3Z3cjMSNhODBhZDNkZjZiMzAzZGQ0NDMyN2NlMDMwZmRkNTExZCM4MTkjI1RSQU5TRk9STUFUSU9OX1JFUVVFU1Q_ahyu8x.png"},{n:"Green",h:"#4CAF50",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782138147/clerks_stride_pro_green_yth6cx.png"}], sizes:[6,7,8,9,10,11], oos:[6], desc:"Plush Fresh Foam X midsole for a super-cushioned, smooth ride.", feats:["Fresh Foam X midsole","Knit bootie upper","Ultra Heel counter","Blown rubber outsole"]},
+  {id:"sp5", name:"Clerks Original",          brand:"Clerks Original",        cat:"Lifestyle",  price:59.99,  was:89.99,  rating:4.5, rev:432,  img:"https://res.cloudinary.com/dxammbmnb/image/upload/v1782136966/clerks_apex_runner_orange_e86sbp.png",  cols:[{n:"Orange",h:"#FF6B1A",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782136966/clerks_apex_runner_orange_e86sbp.png"},{n:"White",h:"#F0F0F0",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782136963/clerks_apex_runner_white_qvoaiz.png"},{n:"Blue",h:"#0044BB",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782123920/magic_edit_TUFITlNqeUZvQk0jMSMyNTkxZWIyZTRiMzY4YTU4MWQxNDdjMzVjYjhhYWZhYyM1MDAjI1RSQU5TRk9STUFUSU9OX1JFUVVFU1Q_ognk5l.png"}], sizes:[7,8,9,10,11,12], oos:[], isNew:true, desc:"Chunky retro style meets modern comfort.", feats:["RS cushioning","Mixed upper materials","Rubber outsole","Padded collar"]},
+  {id:"sp6", name:"Clerks Velocity",       brand:"Clerks Velocity",        cat:"Basketball", price:54.99,  was:74.99,  rating:4.4, rev:876,  img:"https://res.cloudinary.com/dxammbmnb/image/upload/v1782137773/white_nike_tpbikl.png",  cols:[{n:"White",h:"#fff", img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782137773/white_nike_tpbikl.png"},{n:"Black",h:"#1a1a1a",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782137774/black_nike_bta199.png"}], sizes:[7,8,9,10,11,12], oos:[], desc:"Classic 1980s basketball style updated for modern wear.", feats:["Foam midsole","Herringbone traction","Low-cut collar","Synthetic leather upper"]},
+  {id:"sp7", name:"Clerks Aura",    brand:"Clerks Aura",      cat:"Outdoor",    price:114.99, was:159.99, rating:4.8, rev:321,  img:"https://res.cloudinary.com/dxammbmnb/image/upload/v1782296365/Blue_Aura_sakozx.png",  cols:[{n:"Black",h:"#2D2D2D",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782296365/Blue_Aura_sakozx.png"},{n:"Olive",h:"#556B2F",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782296609/Olive_Aura_bckj7h.png"},{n:"Blue",h:"#1565C0",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782296364/Black_Aura_fhzknp.png"}], sizes:[7,8,9,10,11,12], oos:[], desc:"GORE-TEX waterproofing meets lightweight trail performance.", feats:["GORE-TEX waterproof","TRAXION outsole","Continental rubber","Reinforced toe cap"]},
+  {id:"sp8", name:"Clerks Apex Runner",             brand:"Clerks Apex Runner",       cat:"Training",   price:84.99,  was:109.99, rating:4.7, rev:543,  img:"https://res.cloudinary.com/dxammbmnb/image/upload/v1782123546/magic_edit_TUFITlNobi1lTTQjMSNhZDJlOGU2ODNlZGE0N2ExZDU3ZjA3YThjOGNmYTY5MSM1OTAjI1RSQU5TRk9STUFUSU9OX1JFUVVFU1Q_1_mpnlr0.png",  cols:[{n:"Red",h:"#CC2200"},{n:"Black",h:"#1a1a1a", img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782136627/clerks_original_black_jddt5r.png"},{n:"Blue",h:"#1E3A8A", img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782136627/clerks_original_blue_hwmjgg.png"}], sizes:[6,7,8,9,10,11], oos:[], isNew:true, desc:"Lightweight support for daily training with LYTE TRUSS stability.", feats:["FF BLAST midsole","LYTE TRUSS support","Engineered mesh","AHAR outsole"]},
+  {id:"sp9", name:"Clerks Velocity",            brand:"Clerks Velocity",        cat:"Lifestyle",  price:94.99,  was:134.99, rating:4.7, rev:3201, img:"https://res.cloudinary.com/dxammbmnb/image/upload/v1782137774/black_nike_bta199.png",  cols:[{n:"Black",h:"#1a1a1a",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782137774/black_nike_bta199.png"},{n:"White",h:"#fff",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782137773/white_nike_tpbikl.png"},{n:"Blue",h:"#0070DD",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782127042/Blue_nike_a1ryur.png"}], sizes:[7,8,9,10,11,12], oos:[], desc:"The biggest Air unit ever, designed for all-day lifestyle wear.", feats:["270-degree Air unit","Mesh upper","Foam midsole","Durable rubber outsole"]},
+  {id:"sp10",name:"Clerks Aura",             brand:"Clerks Aura",      cat:"Lifestyle",  price:64.99,  was:89.99,  rating:4.8, rev:4521, img:"https://res.cloudinary.com/dxammbmnb/image/upload/v1782296366/Green_Aura_izay6a.png",  cols:[{n:"White/Green",h:"#f5f5f5",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782296366/Green_Aura_izay6a.png"},{n:"White/Navy",h:"#e8e8e8",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782296364/Black_Aura_fhzknp.png"}], sizes:[6,7,8,9,10,11,12], oos:[], desc:"An icon since 1965. Timeless clean design, endlessly versatile.", feats:["Full-grain leather upper","Cushioned sockliner","Rubber cupsole","Perforated 3-stripe detail"]},
+  {id:"sp11",name:"Clerks Stride Pro",          brand:"Clerks Stride Pro", cat:"Lifestyle",  price:69.99,  was:null,   rating:4.6, rev:1876, img:"https://res.cloudinary.com/dxammbmnb/image/upload/v1782138147/clerks_stride_pro_grey_zikgix.png",  cols:[{n:"Grey",h:"#888899",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782138147/clerks_stride_pro_grey_zikgix.png"},{n:"White",h:"#F8F8F8",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782138148/clerks_stride_pro_white_zfw1yd.png"},{n:"Green",h:"#2E5B2E",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782138147/clerks_stride_pro_green_yth6cx.png"}], sizes:[7,8,9,10,11,12], oos:[], isNew:true, desc:"Classic versatile design with iconic N branding and all-day comfort.", feats:["ENCAP midsole","Suede and mesh upper","EVA foam padding","Rubber outsole"]},
+  {id:"sp12",name:"Clerks Original",      brand:"Clerks Original",        cat:"Lifestyle",  price:54.99,  was:74.99,  rating:4.5, rev:1102, img:"https://res.cloudinary.com/dxammbmnb/image/upload/v1782136964/clerks_apex_runner_black_cxbkvj.png",  cols:[{n:"Black",h:"#1a1a1a",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782136964/clerks_apex_runner_black_cxbkvj.png"},{n:"Red",h:"#CC0000",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782136967/clerks_apex_runner_red_yabogu.png"},{n:"Royal",h:"#003399",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782136965/clerks_apex_runner_blue_and_gold_png_tzec62.png"}], sizes:[7,8,9,10,11], oos:[], desc:"Born in 1968 — one of the most iconic sneakers ever made.", feats:["Suede leather upper","Formstrip branding","EVA cushioning","Rubber outsole"]},
+  {id:"sp13",name:"Clerks Velocity",           brand:"Clerks Velocity",        cat:"Running",    price:44.99,  was:64.99,  rating:4.3, rev:892,  img:"https://res.cloudinary.com/dxammbmnb/image/upload/v1782137774/black_nike_bta199.png",  cols:[{n:"Black",h:"#1a1a1a", img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782137774/black_nike_bta199.png"},{n:"White",h:"#fff",img:"https://res.cloudinary.com/dxammbmnb/image/upload/v1782137773/white_nike_tpbikl.png"},{n:"Navy",h:"#003080",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782127042/Blue_nike_a1ryur.png"}], sizes:[6,7,8,9,10,11,12], oos:[], desc:"Reliable everyday running shoe, great for beginners.", feats:["Foam midsole","Breathable mesh upper","Rubber outsole","Padded collar"]},
+  {id:"sp14",name:"Clerks Apex Runner",          brand:"Clerks Apex Runner",       cat:"Running",    price:119.99, was:159.99, rating:4.9, rev:441,  img:"https://res.cloudinary.com/dxammbmnb/image/upload/v1782136627/clerks_original_blue_hwmjgg.png",  cols:[{n:"Blue",h:"#0044FF", img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782136627/clerks_original_blue_hwmjgg.png"},{n:"Black",h:"#222233",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782136627/clerks_original_black_jddt5r.png"},{n:"Birch",h:"#D4C8B0",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782136626/clerks_original_birch_tk2zsj.png"}], sizes:[7,8,9,10,11,12], oos:[], desc:"ASICS' most premium neutral shoe for long-distance comfort.", feats:["FF BLAST+ ECO midsole","LiteTrax-X outsole","PureGEL technology","Jacquard mesh upper"]},
+  {id:"sp15",name:"Clerks Stride Pro",          brand:"Clerks Stride Pro", cat:"Training",   price:79.99,  was:null,   rating:4.6, rev:213,  img:"https://res.cloudinary.com/dxammbmnb/image/upload/v1782138148/clerks_stride_pro_white_zfw1yd.png",  cols:[{n:"White",h:"#F0F0F0",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782138148/clerks_stride_pro_white_zfw1yd.png"},{n:"Black",h:"#1a1a1a",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782123956/magic_edit_TUFITlNsTUw3Z3cjMSNhODBhZDNkZjZiMzAzZGQ0NDMyN2NlMDMwZmRkNTExZCM4MTkjI1RSQU5TRk9STUFUSU9OX1JFUVVFU1Q_ahyu8x.png"}], sizes:[7,8,9,10,11,12], oos:[], isNew:true, desc:"High-performance training shoe with rapid direction-change stability.", feats:["Ndurance outsole","FuelCell midsole","Stable support frame","Mesh upper"]},
+  {id:"sp16",name:"Clerks Original",          brand:"Clerks Original",        cat:"Walking",    price:49.99,  was:69.99,  rating:4.4, rev:334,  img:"https://res.cloudinary.com/dxammbmnb/image/upload/v1782136963/clerks_apex_runner_white_qvoaiz.png",  cols:[{n:"White",h:"#fff",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782136963/clerks_apex_runner_white_qvoaiz.png"},{n:"Royal Blue",h:"#0044BB",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782136963/clerks_apex_runner_royal_blue_pi7d5q.png"}], sizes:[7,8,9,10,11], oos:[], desc:"Retro running style meets everyday walking comfort.", feats:["Rubber outsole","Foam midsole","Synthetic leather upper","Padded collar"]},
+  {id:"sp17",name:"Clerks Apex Runner",          brand:"Clerks Apex Runner",       cat:"Walking",    price:44.99,  was:59.99,  rating:4.5, rev:1203, img:"https://res.cloudinary.com/dxammbmnb/image/upload/v1782136627/clerks_original_black_jddt5r.png",  cols:[{n:"Black",h:"#2a2a2a",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782136627/clerks_original_black_jddt5r.png"},{n:"Light Blue",h:"#E0F0FF",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782136628/clerks_original_light_blue_amqejy.png"}], sizes:[6,7,8,9,10,11,12], oos:[], desc:"Reliable trail and walking shoe with GEL heel cushioning.", feats:["Rearfoot GEL","AHAR outsole","Ortholite sockliner","EVA midsole"]},
+  {id:"sp18",name:"Clerks Velocity",          brand:"Clerks Velocity",        cat:"Basketball", price:74.99,  was:104.99, rating:4.6, rev:677,  img:"https://res.cloudinary.com/dxammbmnb/image/upload/v1782137774/black_nike_bta199.png",  cols:[{n:"Black",h:"#111",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782137774/black_nike_bta199.png"},{n:"White",h:"#F5F5F5", img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782137773/white_nike_tpbikl.png"},{n:"Red",h:"#CC0000",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782122979/magic_edit_TUFITlNaRl9wNHMjMSNkNzVlZWVjZTA5Njk4NGE3YWE0ZmYxOTAzNDBjZDk5ZiM4MjQjI1RSQU5TRk9STUFUSU9OX1JFUVVFU1Q_1_y6hadx.png"}], sizes:[7,8,9,10,11,12], oos:[], desc:"Jordan III-inspired design with Air cushioning for court and street.", feats:["Air cushioning","Full-length midsole","Rubber outsole","Synthetic leather upper"]},
+  {id:"sp19",name:"Clerks Original",          brand:"Clerks Original",        cat:"Running",    price:99.99,  was:139.99, rating:4.7, rev:189,  img:"https://res.cloudinary.com/dxammbmnb/image/upload/v1782136965/clerks_apex_runner_blue_and_gold_png_tzec62.png",  cols:[{n:"Blue/Gold",h:"#0022CC",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782136965/clerks_apex_runner_blue_and_gold_png_tzec62.png"},{n:"Black",h:"#1a1a1a",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782136964/clerks_apex_runner_black_cxbkvj.png"}], sizes:[7,8,9,10,11], oos:[], desc:"Clerks's fastest race-day shoe with carbon plate and elite foam.", feats:["Carbon fibre plate","NITRO Elite foam","PWRTAPE overlays","Specialised outsole"]},
+  {id:"sp20",name:"Clerks Aura",    brand:"Clerks Aura",      cat:"Outdoor",    price:89.99,  was:119.99, rating:4.7, rev:256,  img:"https://res.cloudinary.com/dxammbmnb/image/upload/v1782296611/Grey_Aura_mxb5ec.png",  cols:[{n:"Steel/Grey",h:"#556677",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782296611/Grey_Aura_mxb5ec.png"},{n:"Black",h:"#1a1a1a",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782296365/Blue_Aura_sakozx.png"}], sizes:[7,8,9,10,11,12], oos:[], desc:"Technical trail shoe with aggressive outsole and waterproof upper.", feats:["TRAXION outsole","Continental rubber","Waterproof upper","EVA midsole"]},
+];
+
+const FM = [
+  {id:"fm1", name:"Portland Oxford",       brand:"Clerks", cat:"Oxford Shoes",  price:89.99,  was:119.99, rating:4.8, rev:412,  width:"Standard",   img:"https://res.cloudinary.com/dxammbmnb/image/upload/v1782222349/portland_oxford_tan_shoes_kp0ihv.webp",  cols:[{n:"Tan",h:"#8B6914", img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782222349/portland_oxford_tan_shoes_kp0ihv.webp"},{n:"Black",h:"#1a1a1a",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782222349/portland_oxford_black_shoes_na2ghn.webp"}], sizes:[6,7,8,9,10,11,12], oos:[], desc:"A quintessentially British Oxford in premium full-grain leather.", feats:["Full-grain leather upper","Leather-lined interior","Goodyear welt","Leather stacked heel"]},
+  {id:"fm2", name:"Stanford Derby",        brand:"Clerks", cat:"Derby Shoes",   price:79.99,  was:109.99, rating:4.7, rev:287,  width:"Wide",        img:"https://res.cloudinary.com/dxammbmnb/image/upload/v1782290677/brown_standford_derby_gvrxbg.png",  cols:[{n:"Brown",h:"#8B4513",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782290677/brown_standford_derby_gvrxbg.png"},{n:"Navy",h:"#1a1a3a",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782222351/derby_shoes_stanford_derby_navy_shoes_zifg5z.jpg"},{n:"Black",h:"#1a1a1a",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782222351/derby_shoes_stanford_derby_black_shoes_d6q5uc.jpg"}], sizes:[7,8,9,10,11,12], oos:[], desc:"Open lacing Derby in supple leather — smart casual at its best.", feats:["Premium calf leather","Cushioned insole","Open lace construction","Rubber-tipped heel"]},
+  {id:"fm3", name:"Westbourne Loafer",     brand:"Clerks", cat:"Loafers",       price:69.99,  was:99.99,  rating:4.6, rev:198,  width:"Standard",   img:"https://res.cloudinary.com/dxammbmnb/image/upload/v1782290791/westborn_loafers_connac_gikya0.png",  cols:[{n:"Cognac",h:"#C8760A",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782290791/westborn_loafers_connac_gikya0.png"},{n:"Black",h:"#1a1a1a",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782222351/loafers_westbourne_loafers_black_ftp42x.png"}], sizes:[7,8,9,10,11], oos:[], desc:"Hand-burnished leather loafer with classic penny strap detail.", feats:["Hand-burnished leather","Penny strap","Memory foam insole","Non-slip rubber sole"]},
+  {id:"fm4", name:"Hampton Smart Casual",  brand:"Clerks", cat:"Smart Casual",  price:59.99,  was:84.99,  rating:4.5, rev:156,  width:"Standard",   img:"https://res.cloudinary.com/dxammbmnb/image/upload/v1782222350/smart_casual_hampton_smart_casual_grey_shoes_ztzgzq.png",  cols:[{n:"Tan",h:"#8B6914",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782222350/smart_casual_hampton_smart_casual_grey_shoes_ztzgzq.png"},{n:"Grey",h:"#888899",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782222350/smart_casual_hampton_smart_casual_grey_shoes_ztzgzq.png"}], sizes:[7,8,9,10,11,12], oos:[12], desc:"Relaxed lace-up that bridges formal and casual dressing.", feats:["Soft tumbled leather","Cushioned footbed","Flexible rubber sole","Twin-needle stitching"]},
+  {id:"fm5", name:"Bankside Brogue",       brand:"Clerks", cat:"Oxford Shoes",  price:99.99,  was:139.99, rating:4.9, rev:334,  width:"Standard",   img:"https://res.cloudinary.com/dxammbmnb/image/upload/v1782222350/bankside_brogue_tan_wp6bpe.webp",  cols:[{n:"Tan",h:"#8B6914",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782222350/bankside_brogue_tan_wp6bpe.webp"},{n:"Black",h:"#1a1a1a",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782222350/bankside_brogue_black_qgsd8u.webp"},{n:"Chestnut",h:"#954535",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782222350/bankside_brogue_chestnut_il7jkz.png"}], sizes:[7,8,9,10,11,12], oos:[], desc:"Intricate wingtip broguing with a punched medallion toe.", feats:["Wingtip brogue detailing","Hand-crafted medallion toe","Goodyear welt","Oak bark sole"]},
+  {id:"fm6", name:"Chelsea Workwear Boot", brand:"Clerks", cat:"Workwear",      price:109.99, was:149.99, rating:4.8, rev:221,  width:"Wide",        img:"https://res.cloudinary.com/dxammbmnb/image/upload/v1782222350/workwear_chelsea_workwear_boot_black_mpmwla.png",  cols:[{n:"Black",h:"#1a1a1a",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782222350/workwear_chelsea_workwear_boot_black_mpmwla.png"},{n:"Dark Brown",h:"#3D1F0D",img:"https://res.cloudinary.com/dxammbmnb/image/upload/v1782291625/Chelsea_Workwear_Boot_mrlnki.png"}], sizes:[7,8,9,10,11,12], oos:[], isNew:true, desc:"Classic Chelsea boot with Dainite rubber sole for all-weather use.", feats:["Full-grain leather","Elastic side gussets","Dainite rubber sole","Leather-lined collar"]},
+  {id:"fm7", name:"Academy School Shoe",   brand:"Clerks", cat:"School Shoes",  price:39.99,  was:54.99,  rating:4.6, rev:892,  width:"Extra Wide",  img:"https://res.cloudinary.com/dxammbmnb/image/upload/v1782222349/school_shoes_academy_school_shoes_black_qmieo2.jpg",  cols:[{n:"Black",h:"#1a1a1a",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782222349/school_shoes_academy_school_shoes_black_qmieo2.jpg"}], sizes:[1,2,3,4,5,6,7], oos:[], desc:"Durable, polishable leather built to last the school year.", feats:["Polishable leather","Reinforced toe cap","Cushioned insole","Non-slip outsole"]},
+  {id:"fm8", name:"Kensington Derby",      brand:"Clerks", cat:"Derby Shoes",   price:84.99,  was:114.99, rating:4.7, rev:167,  width:"Standard",   img:"https://res.cloudinary.com/dxammbmnb/image/upload/v1782222351/Derby_kensington_derby_shoes_chestnut_tmh4oi.png",  cols:[{n:"Chestnut",h:"#954535",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782222351/Derby_kensington_derby_shoes_chestnut_tmh4oi.png"},{n:"Navy",h:"#1a1a3a",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782222351/derby_kensington_derby_shoes_navy_exc5lf.png"}], sizes:[7,8,9,10,11], oos:[], isNew:true, desc:"Refined everyday Derby with hand-finished leather and clean lines.", feats:["Hand-finished leather","Antique brass eyelets","Flex-notch sole","Leather-lined throughout"]},
+  {id:"fm9", name:"Temple Monk Strap",     brand:"Clerks", cat:"Smart Casual",  price:94.99,  was:124.99, rating:4.8, rev:143,  width:"Standard",   img:"https://res.cloudinary.com/dxammbmnb/image/upload/v1782222350/Smart_casual_temple_monk_strap_tan_kquyfu.png",  cols:[{n:"Tan",h:"#8B6914",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782222350/Smart_casual_temple_monk_strap_tan_kquyfu.png"},{n:"Burgundy",h:"#800020",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782222350/Smart_casual_temple_monk_strap_burgundy_vptkjy.png"}], sizes:[7,8,9,10,11], oos:[7], desc:"Double monk strap for the confident business dresser.", feats:["Twin monk buckles","Blake stitch construction","Vegetable-tanned leather","Leather sole with rubber heel"]},
+  {id:"fm10",name:"Regent Wholecut Oxford",brand:"Clerks", cat:"Oxford Shoes",  price:129.99, was:174.99, rating:4.9, rev:88,   width:"Standard",   img:"https://res.cloudinary.com/dxammbmnb/image/upload/v1782222350/Regent_wholecut_oxford_black_ni4h42.png",  cols:[{n:"Black",h:"#1a1a1a",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782222350/Regent_wholecut_oxford_black_ni4h42.png"},{n:"Cognac",h:"#C8760A",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782222350/Regent_wholecut_oxford_cognac_jhemlv.png"}], sizes:[7,8,9,10,11], oos:[], desc:"Cut from a single piece of leather — the pinnacle of shoemaking craft.", feats:["Single-piece leather upper","Hand-sewn welt","Oak bark sole","Hand-lasted construction"]},
+  {id:"fm11",name:"Borough Commuter",      brand:"Clerks", cat:"Smart Casual",  price:64.99,  was:null,   rating:4.5, rev:312,  width:"Wide",        img:"https://res.cloudinary.com/dxammbmnb/image/upload/v1782293601/Screenshot_2026-06-24_103231_h7llmv.png",  cols:[{n:"Navy",h:"#1a1a4a",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782293601/Screenshot_2026-06-24_103231_h7llmv.png"},{n:"Khaki",h:"#8B7D5A",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782293655/Screenshot_2026-06-24_103206_z8doie.png"},{n:"Black",h:"#1a1a1a",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782293652/Screenshot_2026-06-24_103131_bvdzl8.png"}], sizes:[7,8,9,10,11,12], oos:[], isNew:true, desc:"Water-resistant leather, shock-absorbing insole, built for city commuting.", feats:["Water-resistant leather","Shock-absorbing insole","Lightweight rubber sole","Slip-resistant outsole"]},
+  {id:"fm12",name:"Aldgate Cap Toe",       brand:"Clerks", cat:"Oxford Shoes",  price:74.99,  was:99.99,  rating:4.6, rev:189,  width:"Standard",   img:"https://res.cloudinary.com/dxammbmnb/image/upload/v1782292799/oxford_shoes_Aldgateap_toes_black_ghlvdg.png",  cols:[{n:"Black",h:"#1a1a1a",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782292799/oxford_shoes_Aldgateap_toes_black_ghlvdg.png"},{n:"Dark Brown",h:"#3D1F0D",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782292798/oxford_shoes_Aldgateap_toes_dark_brown_gdvvsb.png"}], sizes:[7,8,9,10,11,12], oos:[], desc:"Polished cap-toe Oxford for interviews, boardrooms and formal events.", feats:["Cap-toe stitching","Antique brass eyelets","Cork-filled footbed","Premium leather uppers"]},
+  {id:"fm13",name:"Bishopsgate Slip-On",   brand:"Clerks", cat:"Loafers",       price:74.99,  was:104.99, rating:4.7, rev:224,  width:"Standard",   img:"https://res.cloudinary.com/dxammbmnb/image/upload/v1782293082/Bishopsgate_slipon_loafers_black_ri0utm.png",  cols:[{n:"Black",h:"#1a1a1a",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782293082/Bishopsgate_slipon_loafers_black_ri0utm.png"},{n:"Navy",h:"#1a1a4a",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782293073/Bishopsgate_slipon_loafers_navy_gphvwb.png"}], sizes:[7,8,9,10,11,12], oos:[], desc:"Understated business loafer with a smooth leather upper.", feats:["Smooth leather upper","Elasticated gusset","Memory foam insole","Durable rubber sole"]},
+  {id:"fm14",name:"Crown Workwear Derby",  brand:"Clerks", cat:"Workwear",      price:79.99,  was:104.99, rating:4.6, rev:198,  width:"Extra Wide",  img:"https://res.cloudinary.com/dxammbmnb/image/upload/v1782292795/Crown_workwear_derby_workwear_black_q8p5cc.png",  cols:[{n:"Black",h:"#1a1a1a",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782292795/Crown_workwear_derby_workwear_black_q8p5cc.png"},{n:"Dark Brown",h:"#3D1F0D",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782292796/Crown_workwear_derby_workwear_dark_brown_obqdgw.png"}], sizes:[7,8,9,10,11,12,13], oos:[], desc:"Anti-fatigue insole and wide fit for those on their feet all day.", feats:["Wide fit available","Reinforced heel counter","Anti-fatigue insole","Oil-resistant outsole"]},
+  {id:"fm15",name:"Pioneer School Shoe",   brand:"Clerks", cat:"School Shoes",  price:34.99,  was:49.99,  rating:4.5, rev:1104, width:"Wide",        img:"https://res.cloudinary.com/dxammbmnb/image/upload/v1782293393/Screenshot_2026-06-24_102930_hsior7.png",  cols:[{n:"Black",h:"#1a1a1a",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782293393/Screenshot_2026-06-24_102930_hsior7.png"}], sizes:[1,2,3,4,5,6], oos:[], desc:"Velcro fastening school shoe for active, younger children.", feats:["Velcro fastening","Scuff-resistant toe","Wide fit option","Breathable lining"]},
+  {id:"fm16",name:"Greenwich Chelsea",     brand:"Clerks", cat:"Workwear",      price:94.99,  was:129.99, rating:4.7, rev:176,  width:"Standard",   img:"https://res.cloudinary.com/dxammbmnb/image/upload/v1782292791/Workwear_greenwich_chelsea_tan_luueph.jpg",  cols:[{n:"Tan",h:"#8B6914",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782292791/Workwear_greenwich_chelsea_tan_luueph.jpg"},{n:"Black",h:"#1a1a1a",img: "https://res.cloudinary.com/dxammbmnb/image/upload/v1782292788/Workwear_greenwich_chelsea_black_bzamym.jpg"}], sizes:[7,8,9,10,11], oos:[], desc:"Waterproof Chelsea boot that handles British weather and the office.", feats:["Waterproofed leather","Dainite studded sole","Elastic gussets","Side zip for easy on/off"]},
+];
+
+// ─── STATE ───────────────────────────────────────────────────────
+let cart=[], wishlist=[], sCat="All", fCat="All", fCols=[];
+let openId=null, chosenSize=null, chosenColour=null;
+
+// ─── VIEW SWITCHING ──────────────────────────────────────────────
+function goHome()   { goPage("home"); }
+function goSport()  {
+  sSearchQ="";
+  const si=document.getElementById("s-search"); if(si)si.value="";
+  const sc=document.getElementById("s-search-clear"); if(sc)sc.style.display="none";
+  renderS(SP);
+  goPage("sport");
+}
+function goFormal() {
+  fSearchQ="";
+  const fi=document.getElementById("f-search"); if(fi)fi.value="";
+  const fc=document.getElementById("f-search-clear"); if(fc)fc.style.display="none";
+  renderF(FM);
+  goPage("formal");
+}
+
+function sw(v) {
+  ALL_VIEWS.forEach(n=>{
+    const el=document.getElementById("view-"+n);
+    if(el) el.style.display = n===v?"":"none";
+  });
+  ["home","sport","formal"].forEach(n=>{
+    const el=document.getElementById("nav-"+n);
+    if(el) el.style.display = n===v?"":"none";
+  });
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+// ─── CARD BUILDERS ───────────────────────────────────────────────
+function mkStars(r){ return "★".repeat(Math.round(r))+"☆".repeat(5-Math.round(r)); }
+
+function sCard(p){
+  const disc=p.was?Math.round((1-p.price/p.was)*100):0;
+  const dots=p.cols.map(c=>`<span class="dot" style="background:${c.h}" title="${c.n}"></span>`).join("");
+  return `<div class="sc" onclick="openModal('${p.id}')">
+    <div class="ci">
+      <img src="${p.img}" alt="${p.name}" loading="lazy"/>
+      ${disc>0?`<span class="disc-bdg">${disc}% Off</span>`:p.isNew?`<span class="new-bdg">New</span>`:""}
+      <button class="wish-btn" onclick="event.stopPropagation();toggleWish('${p.id}',this)">${wishlist.includes(p.id)?"❤️":"🤍"}</button>
+      <div class="add-bar" onclick="event.stopPropagation();openModal('${p.id}')">Choose Size &amp; Add to Bag</div>
+    </div>
+    <div class="cb2">
+      <p class="brt">${p.brand}</p>
+      <p class="ctt">${p.name}</p>
+      <p class="cst">${mkStars(p.rating)} <span>(${p.rev.toLocaleString()})</span></p>
+      <div class="cpp">
+        <span class="pnow">£${p.price.toFixed(2)}</span>
+        ${p.was?`<span class="pwas">£${p.was.toFixed(2)}</span>`:""}
+        ${disc>0?`<span class="ppct">-${disc}%</span>`:""}
+      </div>
+      <div class="dots">${dots}</div>
+    </div>
+  </div>`;
+}
+
+function fCard(p){
+  const disc=p.was?Math.round((1-p.price/p.was)*100):0;
+  const dots=p.cols.map(c=>`<span class="dot" style="background:${c.h}" title="${c.n}"></span>`).join("");
+  return `<div class="fc" onclick="openModal('${p.id}')">
+    <div class="ci">
+      <img src="${p.img}" alt="${p.name}" loading="lazy"/>
+      ${disc>0?`<span class="disc-bdg">${disc}% Off</span>`:p.isNew?`<span class="new-bdg">New In</span>`:""}
+      <button class="wish-btn" onclick="event.stopPropagation();toggleWish('${p.id}',this)">${wishlist.includes(p.id)?"❤️":"🤍"}</button>
+      <div class="add-bar" onclick="event.stopPropagation();openModal('${p.id}')">Choose Size &amp; Add to Basket</div>
+    </div>
+    <div class="cb2">
+      <p class="brt">${p.cat}</p>
+      <p class="ctt">${p.name}</p>
+      <p class="cst">${mkStars(p.rating)} <span>(${p.rev.toLocaleString()})</span></p>
+      <div class="cpp">
+        <span class="pnow">£${p.price.toFixed(2)}</span>
+        ${p.was?`<span class="pwas">£${p.was.toFixed(2)}</span>`:""}
+        ${disc>0?`<span class="ppct">-${disc}%</span>`:""}
+      </div>
+      <div class="dots">${dots}</div>
+    </div>
+  </div>`;
+}
+
+function renderS(list){
+  const g=document.getElementById("s-grid"), n=document.getElementById("s-none");
+  if(!list.length){g.innerHTML="";n.style.display="block";}
+  else{g.innerHTML=list.map(sCard).join("");n.style.display="none";}
+  document.getElementById("s-cnt").textContent=list.length+" Product"+(list.length!==1?"s":"");
+}
+function renderF(list){
+  const g=document.getElementById("f-grid"), n=document.getElementById("f-none");
+  if(!list.length){g.innerHTML="";n.style.display="block";}
+  else{g.innerHTML=list.map(fCard).join("");n.style.display="none";}
+  document.getElementById("f-cnt").textContent=list.length+" Style"+(list.length!==1?"s":"");
+}
+
+// ─── SPORT FILTERS ───────────────────────────────────────────────
+function filterS(cat){
+  sCat=cat;
+  document.querySelectorAll("#sp-pills .pill").forEach(b=>b.classList.toggle("on",b.textContent.trim()===cat));
+  applyS();
+}
+function applyS(){
+  const brands=[...document.querySelectorAll("#view-sport input[type=checkbox][value]")]
+    .filter(c=>c.checked&&["Clerks Velocity","Clerks Aura","Clerks Apex Runner","Clerks Original","Clerks Stride Pro"].includes(c.value)).map(c=>c.value);
+  const max=parseFloat(document.getElementById("s-rng").value);
+  const saleOnly=document.getElementById("s-sale").checked;
+  const sort=document.getElementById("s-srt").value;
+  let res=SP.filter(p=>
+    (sCat==="All"||p.cat===sCat)&&
+    (!brands.length||brands.includes(p.brand))&&
+    p.price<=max&&
+    (!saleOnly||p.was)&&
+    matchesSearch(p, sSearchQ)
+  );
+  if(sort==="price-asc")  res.sort((a,b)=>a.price-b.price);
+  if(sort==="price-desc") res.sort((a,b)=>b.price-a.price);
+  if(sort==="rating")     res.sort((a,b)=>b.rating-a.rating);
+  if(sort==="discount")   res.sort((a,b)=>(b.was?(1-b.price/b.was):0)-(a.was?(1-a.price/a.was):0));
+  const tags=[];
+  if(sCat!=="All")tags.push(sCat);if(brands.length)tags.push(brands.join(", "));if(max<200)tags.push("Under £"+max);if(saleOnly)tags.push("Sale only");if(sSearchQ.trim())tags.push('"'+sSearchQ.trim()+'"');
+  document.getElementById("s-tags").textContent=tags.length?"Filters: "+tags.join(" · "):"";
+  renderS(res);
+}
+function clearS(){
+  sCat="All"; sSearchQ="";
+  document.querySelectorAll("#view-sport input").forEach(i=>{if(i.type==="checkbox")i.checked=false;if(i.type==="range")i.value=200;});
+  document.getElementById("s-rl").textContent="200";
+  document.getElementById("s-srt").value="featured";
+  document.querySelectorAll("#sp-pills .pill").forEach(b=>b.classList.toggle("on",b.textContent.trim()==="All"));
+  document.getElementById("s-tags").textContent="";
+  const si=document.getElementById("s-search"); if(si)si.value="";
+  const sc=document.getElementById("s-search-clear"); if(sc)sc.style.display="none";
+  renderS(SP);
+}
+
+// ─── FORMAL FILTERS ──────────────────────────────────────────────
+function filterF(cat){
+  fCat=cat;
+  document.querySelectorAll("#fm-pills .pill").forEach(b=>b.classList.toggle("on",b.textContent.trim()===cat));
+  applyF();
+}
+function toggleCol(btn){
+  const col=btn.dataset.col; btn.classList.toggle("on");
+  fCols=fCols.includes(col)?fCols.filter(c=>c!==col):[...fCols,col];
+  applyF();
+}
+function applyF(){
+  const max=parseFloat(document.getElementById("f-rng").value);
+  const sort=document.getElementById("f-srt").value;
+  const widths=[...document.querySelectorAll("#view-formal input[type=checkbox][value]")]
+    .filter(c=>c.checked&&["Standard","Wide","Extra Wide"].includes(c.value)).map(c=>c.value);
+  let res=FM.filter(p=>
+    (fCat==="All"||p.cat===fCat)&&p.price<=max&&
+    (!widths.length||widths.includes(p.width))&&
+    (!fCols.length||fCols.some(fc=>p.cols.some(c=>c.n.toLowerCase().includes(fc.toLowerCase()))))&&
+    matchesSearch(p, fSearchQ)
+  );
+  if(sort==="price-asc")  res.sort((a,b)=>a.price-b.price);
+  if(sort==="price-desc") res.sort((a,b)=>b.price-a.price);
+  if(sort==="rating")     res.sort((a,b)=>b.rating-a.rating);
+  const tags=[];
+  if(fCat!=="All")tags.push(fCat);if(fCols.length)tags.push(fCols.join(", "));if(max<180)tags.push("Under £"+max);if(widths.length)tags.push(widths.join(", "));if(fSearchQ.trim())tags.push('"'+fSearchQ.trim()+'"');
+  document.getElementById("f-tags").textContent=tags.length?"Filters: "+tags.join(" · "):"";
+  renderF(res);
+}
+function clearF(){
+  fCat="All";fCols=[];fSearchQ="";
+  document.querySelectorAll("#view-formal input").forEach(i=>{if(i.type==="checkbox")i.checked=false;if(i.type==="range")i.value=180;});
+  document.getElementById("f-rl").textContent="180";
+  document.getElementById("f-srt").value="featured";
+  document.querySelectorAll("#fm-pills .pill").forEach(b=>b.classList.toggle("on",b.textContent.trim()==="All"));
+  document.querySelectorAll(".sw").forEach(s=>s.classList.remove("on"));
+  document.getElementById("f-tags").textContent="";
+  const fi=document.getElementById("f-search"); if(fi)fi.value="";
+  const fc=document.getElementById("f-search-clear"); if(fc)fc.style.display="none";
+  renderF(FM);
+}
+
+// ─── MODAL ───────────────────────────────────────────────────────
+function openModal(id){
+  const p=[...SP,...FM].find(x=>x.id===id);
+  if(!p)return;
+  openId=id;chosenSize=null;chosenColour=null;
+  const disc=p.was?Math.round((1-p.price/p.was)*100):0;
+  const firstCol=p.cols[0] || {};
+  const firstImg=firstCol.img || p.img;
+  document.getElementById("m-img").src=firstImg;
+  document.getElementById("m-img").alt=p.name;
+  document.getElementById("m-brand").textContent=p.brand;
+  document.getElementById("m-name").textContent=p.name;
+  document.getElementById("m-price").textContent="£"+p.price.toFixed(2);
+  document.getElementById("m-was").textContent=p.was?"£"+p.was.toFixed(2):"";
+  const de=document.getElementById("m-disc");
+  de.textContent=disc>0?"-"+disc+"%":"";de.style.display=disc>0?"":"none";
+  document.getElementById("m-stars").innerHTML=mkStars(p.rating)+" <span>"+p.rating+" ("+p.rev.toLocaleString()+" reviews)</span>";
+  document.getElementById("m-desc").textContent=p.desc;
+  document.getElementById("m-feats").innerHTML=p.feats.map(f=>`<li>${f}</li>`).join("");
+  document.getElementById("m-col-lbl").textContent="Please select";
+  document.getElementById("m-sz-lbl").textContent="Please select";
+  document.getElementById("m-cols").innerHTML=p.cols.map(c=>
+    `<button class="col-btn" style="background:${c.h};${c.h==="#fff"||c.h==="#eee"||c.h==="#f5f5f5"||c.h==="#F0F0F0"||c.h==="#e8e8e8"?"border:1px solid #ccc;":""}" title="${c.n}" data-n="${c.n}" onclick="pickCol(this,'${c.n}','${c.img || p.img}')"></button>`
+  ).join("");
+  document.getElementById("m-sizes").innerHTML=p.sizes.map(s=>{
+    const oos=p.oos&&p.oos.includes(s);
+    return `<button class="sz-btn${oos?" oos":""}" ${oos?"disabled":""} onclick="pickSz(this,${s})">${s}</button>`;
+  }).join("");
+  document.getElementById("m-thumbs").innerHTML=p.cols.map((c,i)=>
+    `<img class="mth${i===0?" on":""}" src="${c.img || p.img}" alt="${c.n}" onclick="swapImg(this,'${c.img || p.img}')"/>`
+  ).join("");
+  document.getElementById("modal-bg").style.display="flex";
+  document.body.style.overflow="hidden";
+}
+function pickCol(btn,name,src){
+  chosenColour=name;
+  document.getElementById("m-col-lbl").textContent=name;
+  document.querySelectorAll(".col-btn").forEach(b=>b.classList.remove("on"));
+  btn.classList.add("on");
+  if(src){
+    document.getElementById("m-img").src=src;
+  }
+}
+function pickSz(btn,sz){
+  chosenSize=sz;
+  document.getElementById("m-sz-lbl").textContent="UK "+sz;
+  document.querySelectorAll(".sz-btn").forEach(b=>b.classList.remove("on"));
+  btn.classList.add("on");
+}
+function swapImg(th,src){
+  document.getElementById("m-img").src=src;
+  document.querySelectorAll(".mth").forEach(t=>t.classList.remove("on"));
+  th.classList.add("on");
+}
+function closeModal(){
+  document.getElementById("modal-bg").style.display="none";
+  document.body.style.overflow="";
+  openId=chosenSize=chosenColour=null;
+}
+function bgClick(e){if(e.target===document.getElementById("modal-bg"))closeModal();}
+
+// ─── CART ────────────────────────────────────────────────────────
+function addFromModal(){
+  if(!chosenColour){alert("Please select a colour.");return;}
+  if(!chosenSize){alert("Please select a size.");return;}
+  const p=[...SP,...FM].find(x=>x.id===openId);
+  const ex=cart.find(i=>i.id===p.id&&i.size===chosenSize&&i.colour===chosenColour);
+  if(ex)ex.qty++;else cart.push({...p,size:chosenSize,colour:chosenColour,qty:1});
+  updateCart();closeModal();openCart();
+}
+function updateCart(){
+  const total=cart.reduce((s,i)=>s+i.price*i.qty,0);
+  const count=cart.reduce((s,i)=>s+i.qty,0);
+  const b=document.getElementById("cart-bdg");
+  b.textContent=count;b.style.display=count>0?"flex":"none";
+  document.getElementById("cart-hdg").textContent="Your Basket ("+count+")";
+  document.getElementById("cart-tot").textContent="£"+total.toFixed(2);
+  const dn=document.getElementById("cart-del");
+  if(total>0&&total<50){dn.textContent="Add £"+(50-total).toFixed(2)+" more for free delivery";dn.style.display="block";}
+  else dn.style.display="none";
+  const list=document.getElementById("cart-list"),empty=document.getElementById("cart-empty"),ft=document.getElementById("cart-ft");
+  if(!cart.length){list.innerHTML="";empty.style.display="flex";ft.style.display="none";return;}
+  empty.style.display="none";ft.style.display="block";
+  list.innerHTML=cart.map((item,i)=>`
+    <div class="cart-row">
+      <img src="${item.img}" alt="${item.name}"/>
+      <div class="ci2">
+        <p class="cbr">${item.brand}</p>
+        <p class="cnm">${item.name}</p>
+        <p class="cmt">UK ${item.size} · ${item.colour}</p>
+        <div class="qty-row">
+          <button class="qty-btn" onclick="chQ(${i},-1)">−</button>
+          <span class="qty-n">${item.qty}</span>
+          <button class="qty-btn" onclick="chQ(${i},1)">+</button>
+          <span class="ipr">£${(item.price*item.qty).toFixed(2)}</span>
+        </div>
+      </div>
+    </div>`).join("");
+}
+function chQ(i,d){cart[i].qty+=d;if(cart[i].qty<=0)cart.splice(i,1);updateCart();}
+function openCart(){document.getElementById("cart-draw").classList.add("open");document.getElementById("cart-shade").style.display="block";updateCart();}
+function closeCart(){document.getElementById("cart-draw").classList.remove("open");document.getElementById("cart-shade").style.display="none";}
+
+// ─── SEARCH (store-specific live filter) ─────────────────────────
+// Strip the word "Clerks" (case-insensitive) from the front of a
+// product name before matching, so users don't need to type it.
+function searchableTokens(name){
+  return name.toLowerCase().replace(/^clerks\s+/i,"").trim();
+}
+
+function matchesSearch(p, q){
+  if(!q) return true;
+  const raw   = p.name.toLowerCase();
+  const clean = searchableTokens(p.name);
+  const terms = q.toLowerCase().trim().split(/\s+/);
+  // Every typed word must appear somewhere in the name (raw or stripped)
+  return terms.every(t => raw.includes(t) || clean.includes(t));
+}
+
+let sSearchQ = "";
+let fSearchQ = "";
+
+function onSSearch(input){
+  sSearchQ = input.value;
+  const clear = document.getElementById("s-search-clear");
+  if(clear) clear.style.display = sSearchQ ? "block" : "none";
+  applyS();
+}
+function clearSSearch(){
+  sSearchQ="";
+  const inp=document.getElementById("s-search");
+  const clear=document.getElementById("s-search-clear");
+  if(inp) inp.value="";
+  if(clear) clear.style.display="none";
+  applyS();
+}
+
+function onFSearch(input){
+  fSearchQ = input.value;
+  const clear = document.getElementById("f-search-clear");
+  if(clear) clear.style.display = fSearchQ ? "block" : "none";
+  applyF();
+}
+function clearFSearch(){
+  fSearchQ="";
+  const inp=document.getElementById("f-search");
+  const clear=document.getElementById("f-search-clear");
+  if(inp) inp.value="";
+  if(clear) clear.style.display="none";
+  applyF();
+}
+
+// ─── WISHLIST ────────────────────────────────────────────────────
+function toggleWish(id,btn){
+  if(wishlist.includes(id)){wishlist=wishlist.filter(w=>w!==id);btn.textContent="🤍";}
+  else{wishlist.push(id);btn.textContent="❤️";}
+  const wb=document.getElementById("wish-bdg");
+  wb.textContent=wishlist.length;wb.style.display=wishlist.length>0?"flex":"none";
+}
+
+function openFavorites(){
+  renderFavorites();
+  goPage("favorites");
+}
+
+function renderFavorites(){
+  const all=[...SP,...FM];
+  const items=wishlist.map(id=>all.find(p=>p.id===id)).filter(Boolean);
+  const grid=document.getElementById("fav-grid");
+  const empty=document.getElementById("fav-empty");
+  if(!items.length){
+    grid.innerHTML="";
+    empty.style.display="block";
+    return;
+  }
+  empty.style.display="none";
+  // Determine card type per item and render
+  grid.innerHTML=items.map(p=>p.id.startsWith("sp")?sCard(p):fCard(p)).join("");
+}
+
+// ─── INIT ────────────────────────────────────────────────────────
+(function(){
+  // Build the home sale grid from products that have a sale price
+  const items=[...SP.filter(p=>p.was),...FM.filter(p=>p.was)].slice(0,4);
+  document.getElementById("sale-grid").innerHTML=items.map(p=>{
+    const pct=Math.round((1-p.price/p.was)*100);
+    return `<div class="sale-card" onclick="openModal('${p.id}')">
+      <div class="sale-img"><img src="${p.img}" alt="${p.name}" loading="lazy"/><span class="sale-bdg">${pct}% Off</span></div>
+      <p class="cb">${p.brand}</p><p class="cn">${p.name}</p>
+      <div class="cp"><span class="pn">£${p.price.toFixed(2)}</span><span class="pw">£${p.was.toFixed(2)}</span></div>
+    </div>`;
+  }).join("");
+})();
+
+
+// ─── ALL VIEWS ────────────────────────────────────────────────────
+const ALL_VIEWS = ["home","sport","formal","signin","register","account","track","locator","help","checkout","favorites"];
+
+function goPage(v){
+  ALL_VIEWS.forEach(n=>{
+    const el=document.getElementById("view-"+n);
+    if(el) el.style.display = n===v?"":"none";
+  });
+  // nav bar
+  ["home","sport","formal"].forEach(n=>{
+    const el=document.getElementById("nav-"+n);
+    if(el) el.style.display = n===v?"":"none";
+  });
+  // body class drives header/announcement colours
+  document.body.className = v==="sport"?"sport" : v==="formal"?"formal" : "";
+  window.scrollTo({top:0,behavior:"smooth"});
+  // per-page init
+  if(v==="locator") renderStores("");
+  if(v==="help")    renderFaq();
+  if(v==="account") renderAccount();
+}
+
+// ─── AUTH STATE ───────────────────────────────────────────────────
+let currentUser = null;
+
+const DEMO_USER = { email:"demo@clerks.co.uk", password:"Clerks123", firstName:"Alex", lastName:"Morgan", phone:"+44 7700 900123", address:"14 Regent Street, London, W1B 5AH" };
+
+function signOut(){
+  currentUser=null;
+  document.getElementById("btn-signin").style.display="";
+  document.getElementById("btn-register").style.display="";
+  document.getElementById("btn-account").style.display="none";
+  document.getElementById("btn-signout").style.display="none";
+  goHome();
+}
+
+function setLoggedIn(user){
+  currentUser=user;
+  document.getElementById("btn-signin").style.display="none";
+  document.getElementById("btn-register").style.display="none";
+  document.getElementById("btn-account").style.display="";
+  document.getElementById("btn-signout").style.display="";
+}
+
+function doSignIn(e){
+  e.preventDefault();
+  const email=document.getElementById("si-email").value.trim();
+  const pass =document.getElementById("si-pass").value;
+  const err  =document.getElementById("si-err");
+  if(email===DEMO_USER.email && pass===DEMO_USER.password){
+    err.textContent="";
+    setLoggedIn(DEMO_USER);
+    goPage("account");
+  } else if(email && pass){
+    // Accept any plausible credentials for demo
+    const fn = email.split("@")[0].replace(/[^a-zA-Z]/g," ").split(" ")[0];
+    const user = {email, firstName: fn.charAt(0).toUpperCase()+fn.slice(1), lastName:"", phone:"", address:""};
+    setLoggedIn(user);
+    goPage("account");
+  } else {
+    err.textContent="Please enter your email and password.";
+  }
+}
+
+function doRegister(e){
+  e.preventDefault();
+  const fn   = document.getElementById("reg-fn").value.trim();
+  const ln   = document.getElementById("reg-ln").value.trim();
+  const email= document.getElementById("reg-email").value.trim();
+  const pass = document.getElementById("reg-pass").value;
+  const pass2= document.getElementById("reg-pass2").value;
+  const err  = document.getElementById("reg-err");
+  if(pass!==pass2){ err.textContent="Passwords do not match."; return; }
+  if(pass.length<8){ err.textContent="Password must be at least 8 characters."; return; }
+  err.textContent="";
+  const user={email,firstName:fn,lastName:ln,phone:"",address:""};
+  setLoggedIn(user);
+  goPage("account");
+}
+
+// ─── ACCOUNT ─────────────────────────────────────────────────────
+const DEMO_ORDERS = [
+  {num:"CLK-29418",date:"18 Jun 2025",status:"Delivered",items:[{id:"fm1"},{id:"sp2"}]},
+  {num:"CLK-28854",date:"3 May 2025", status:"Delivered",items:[{id:"fm5"}]},
+];
+
+function renderAccount(){
+  if(!currentUser) return;
+  document.getElementById("acct-eyebrow").textContent = "Your Account";
+  document.getElementById("acct-name").textContent = "Welcome back, "+currentUser.firstName;
+  document.getElementById("acct-fn").value = currentUser.firstName||"";
+  document.getElementById("acct-ln").value = currentUser.lastName||"";
+  document.getElementById("acct-em").value = currentUser.email||"";
+  document.getElementById("acct-ph-in").value = currentUser.phone||"";
+  document.getElementById("acct-addr").textContent = currentUser.address||"No saved address";
+  const all=[...SP,...FM];
+  document.getElementById("acct-orders-list").innerHTML = DEMO_ORDERS.map(o=>{
+    const chips=o.items.map(i=>{
+      const p=all.find(x=>x.id===i.id); if(!p)return"";
+      const cls=o.status==="Delivered"?"delivered":"transit";
+      return `<div class="order-row-mini"><img src="${p.img}" alt="${p.name}"/>
+        <div class="orm-info"><strong>${p.name}</strong><span>Order ${o.num} · ${o.date}</span></div>
+        <span class="orm-status ${cls}">${o.status}</span></div>`;
+    }).join("");
+    return chips;
+  }).join("")||"<p style='color:#aaa;font-size:13px;'>No orders yet.</p>";
+}
+
+function acctTab(btn, panelId){
+  document.querySelectorAll(".acct-nav-btn").forEach(b=>b.classList.remove("on"));
+  btn.classList.add("on");
+  ["acct-orders","acct-details","acct-addresses","acct-prefs"].forEach(id=>{
+    const el=document.getElementById(id); if(el) el.style.display=id===panelId?"":"none";
+  });
+}
+
+// ─── TRACK ORDER ─────────────────────────────────────────────────
+const TRACK_ORDERS = {
+  "CLK-29418":{status:"Delivered",   statusCls:"ts-delivered",   chip:"delivered",  items:[{id:"fm1",qty:1,sz:9,col:"Tan"},{id:"sp2",qty:1,sz:10,col:"Black"}],
+    steps:[{l:"Order Placed",d:"Tue 18 Jun, 09:14",done:true},{l:"Payment Confirmed",d:"Tue 18 Jun, 09:15",done:true},{l:"Picking &amp; Packing",d:"Tue 18 Jun, 14:30",done:true},{l:"Dispatched",d:"Wed 19 Jun, 08:00",done:true},{l:"Out for Delivery",d:"Thu 20 Jun, 10:22",done:true},{l:"Delivered",d:"Thu 20 Jun, 13:41",done:true,active:false}]},
+  "CLK-30071":{status:"Out for Delivery",statusCls:"ts-transit",chip:"transit", items:[{id:"sp14",qty:1,sz:9,col:"Blue"}],
+    steps:[{l:"Order Placed",d:"Mon 23 Jun, 18:42",done:true},{l:"Payment Confirmed",d:"Mon 23 Jun, 18:43",done:true},{l:"Picking &amp; Packing",d:"Tue 24 Jun, 07:15",done:true},{l:"Dispatched",d:"Tue 24 Jun, 11:00",done:true},{l:"Out for Delivery",d:"Wed 25 Jun, 09:18",done:true,active:true},{l:"Delivered",d:"Expected Wed 25 Jun",done:false}]},
+  "CLK-28854":{status:"Dispatched",  statusCls:"ts-dispatched",chip:"transit",  items:[{id:"fm5",qty:1,sz:8,col:"Tan"}],
+    steps:[{l:"Order Placed",d:"Fri 20 Jun, 11:03",done:true},{l:"Payment Confirmed",d:"Fri 20 Jun, 11:04",done:true},{l:"Picking &amp; Packing",d:"Fri 20 Jun, 15:55",done:true},{l:"Dispatched",d:"Sat 21 Jun, 09:30",done:true,active:true},{l:"Out for Delivery",d:"Expected Wed 25 Jun",done:false},{l:"Delivered",d:"Estimated Thu 26 Jun",done:false}]},
+  "CLK-31102":{status:"Processing",  statusCls:"ts-processing",chip:"transit",  items:[{id:"fm10",qty:1,sz:9,col:"Black"},{id:"sp7",qty:1,sz:10,col:"Olive"}],
+    steps:[{l:"Order Placed",d:"Wed 24 Jun, 14:07",done:true,active:true},{l:"Payment Confirmed",d:"Wed 24 Jun, 14:08",done:true},{l:"Picking &amp; Packing",d:"Pending",done:false},{l:"Dispatched",d:"Estimated Thu 25 Jun",done:false},{l:"Out for Delivery",d:"Estimated Fri 26 Jun",done:false},{l:"Delivered",d:"Estimated Fri 26 Jun",done:false}]},
+};
+
+function setTrack(num){ document.getElementById("track-input").value=num; doTrack(); }
+function doTrack(){
+  const num=document.getElementById("track-input").value.trim().toUpperCase();
+  const box=document.getElementById("track-result");
+  const order=TRACK_ORDERS[num];
+  box.style.display="block";
+  if(!order){ box.innerHTML=`<div class="track-result-box"><p style="color:var(--red);font-weight:700;">Order not found.</p><p style="font-size:13px;color:#888;margin-top:6px;">Please check your order number and try again. If you need help, <a href="#" onclick="goPage('help');return false;" style="color:var(--brown);">contact us</a>.</p></div>`; return; }
+  const all=[...SP,...FM];
+  const steps=order.steps.map(s=>{
+    const cls=s.active?"active":s.done?"done":"pending";
+    return `<div class="tl-step ${cls}"><div class="tl-label">${s.l}</div><div class="tl-date">${s.d}</div></div>`;
+  }).join("");
+  const items=order.items.map(i=>{
+    const p=all.find(x=>x.id===i.id); if(!p)return"";
+    return `<div class="tr-item"><img src="${p.img}" alt="${p.name}"/><div><strong>${p.name}</strong><br>UK ${i.sz} · ${i.col} · Qty ${i.qty}</div></div>`;
+  }).join("");
+  box.innerHTML=`<div class="track-result-box">
+    <div class="tr-header">
+      <div><div class="tr-num">Order ${num}</div></div>
+      <span class="tr-status-chip ${order.statusCls}">${order.status}</span>
+    </div>
+    <div class="track-timeline">${steps}</div>
+    <div class="tr-items">${items}</div>
+  </div>`;
+}
+
+// ─── STORE LOCATOR ────────────────────────────────────────────────
+const STORES = [
+  {name:"Clerks Oxford Street",type:"both",typeLbl:"Sport &amp; Formal",typeClass:"lt-both",addr:"142 Oxford Street, London, W1D 1LT",hours:"Mon–Sat 9am–8pm · Sun 11am–6pm",phone:"020 7123 4567"},
+  {name:"Clerks Manchester Arndale",type:"both",typeLbl:"Sport &amp; Formal",typeClass:"lt-both",addr:"Upper Mall East, Manchester Arndale, Manchester, M4 3AQ",hours:"Mon–Sat 9am–9pm · Sun 11am–5pm",phone:"0161 234 5678"},
+  {name:"Clerks Birmingham Bullring",type:"both",typeLbl:"Sport &amp; Formal",typeClass:"lt-both",addr:"Unit 128, Bullring Shopping Centre, Birmingham, B5 4BU",hours:"Mon–Sat 9am–9pm · Sun 11am–5pm",phone:"0121 345 6789"},
+  {name:"Clerks Leeds Trinity",type:"sport",typeLbl:"Sport",typeClass:"lt-sport",addr:"27 Albion Street, Leeds Trinity, Leeds, LS1 5AT",hours:"Mon–Sat 9am–8pm · Sun 12pm–6pm",phone:"0113 456 7890"},
+  {name:"Clerks Glasgow Buchanan",type:"both",typeLbl:"Sport &amp; Formal",typeClass:"lt-both",addr:"220 Buchanan Street, Glasgow, G1 2GF",hours:"Mon–Sat 9am–7pm · Sun 11am–5pm",phone:"0141 567 8901"},
+  {name:"Clerks Edinburgh Princes St",type:"formal",typeLbl:"Formal",typeClass:"lt-formal",addr:"58 Princes Street, Edinburgh, EH2 2DG",hours:"Mon–Sat 10am–7pm · Sun 12pm–5pm",phone:"0131 678 9012"},
+  {name:"Clerks Liverpool ONE",type:"both",typeLbl:"Sport &amp; Formal",typeClass:"lt-both",addr:"Unit 42, Liverpool ONE, Liverpool, L1 8LG",hours:"Mon–Sat 9am–9pm · Sun 11am–5pm",phone:"0151 789 0123"},
+  {name:"Clerks Bristol Cabot Circus",type:"sport",typeLbl:"Sport",typeClass:"lt-sport",addr:"Unit 16, Cabot Circus, Bristol, BS1 3BX",hours:"Mon–Sat 9am–8pm · Sun 11am–5pm",phone:"0117 890 1234"},
+  {name:"Clerks Brighton Churchill Square",type:"formal",typeLbl:"Formal",typeClass:"lt-formal",addr:"Churchill Square Shopping Centre, Brighton, BN1 2RG",hours:"Mon–Sat 9am–6pm · Sun 11am–5pm",phone:"01273 901 234"},
+];
+
+function renderStores(q){
+  const filtered=q.trim()?STORES.filter(s=>(s.name+s.addr).toLowerCase().includes(q.toLowerCase())):STORES;
+  const grid=document.getElementById("loc-grid");
+  if(!filtered.length){ grid.innerHTML=`<p style="color:#aaa;font-size:14px;">No stores found for "${q}".</p>`; return; }
+  grid.innerHTML=filtered.map(s=>`
+    <div class="loc-card">
+      <div class="loc-card-hd">
+        <div class="loc-name">${s.name.replace("Clerks ","")}</div>
+        <span class="loc-type ${s.typeClass}">${s.typeLbl}</span>
+      </div>
+      <p class="loc-addr">${s.addr}</p>
+      <div class="loc-hours"><strong>Opening Hours</strong>${s.hours}</div>
+      <p class="loc-phone">📞 ${s.phone}</p>
+      <button class="loc-btn">Get Directions →</button>
+    </div>`).join("");
+}
+function filterStores(q){ renderStores(q); }
+
+// ─── HELP / FAQ ───────────────────────────────────────────────────
+const FAQS = [
+  {q:"How long does standard delivery take?",a:"Standard delivery takes 3–5 working days. Express (next working day) and Next Day (order before 9pm) options are also available at checkout."},
+  {q:"Is delivery free?",a:"Yes — standard delivery is free on all orders over £50. Orders under £50 incur a small £3.99 delivery charge."},
+  {q:"How do I return an item?",a:"You have 30 days to return any unworn item in its original packaging. Simply print your prepaid return label from your order confirmation email, attach it, and drop the parcel at any Post Office."},
+  {q:"Can I exchange for a different size?",a:"Yes. Place a new order for the correct size and return the original. Your refund will be processed within 5 working days of us receiving the return."},
+  {q:"How do I find my correct shoe size?",a:"Each product page includes a size guide. As a general rule, Clerks shoes are true to size. If you are between sizes, we recommend sizing up."},
+  {q:"Can I amend or cancel my order?",a:"Orders can be amended or cancelled within 30 minutes of being placed. After this, the order will have entered fulfilment. Please contact us immediately if you need to make a change."},
+  {q:"Do you offer a student discount?",a:"Yes — 10% off with a valid student ID. Verify your student status through our Student Discount page in your account area."},
+  {q:"How do I track my order?",a:"Once your order has been dispatched, you will receive a tracking email. You can also use the Track Order page on this site with your order number."},
+];
+
+function renderFaq(){
+  document.getElementById("faq-list").innerHTML=FAQS.map((f,i)=>`
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(${i})">
+        <span>${f.q}</span><span class="faq-icon" id="faq-ico-${i}">＋</span>
+      </button>
+      <div class="faq-a" id="faq-a-${i}">${f.a}</div>
+    </div>`).join("");
+}
+function toggleFaq(i){
+  const a=document.getElementById("faq-a-"+i), ico=document.getElementById("faq-ico-"+i);
+  const open=a.classList.toggle("open");
+  ico.textContent=open?"－":"＋";
+}
+function doHelp(e){
+  e.preventDefault();
+  const sub=document.getElementById("help-subject").value;
+  if(!sub){alert("Please select a topic.");return;}
+  document.getElementById("help-form-wrap").style.display="none";
+  document.getElementById("help-success").style.display="block";
+}
+function resetHelp(){
+  document.getElementById("help-form-wrap").style.display="block";
+  document.getElementById("help-success").style.display="none";
+  document.getElementById("help-form-wrap").querySelector("form").reset();
+}
+
+// ─── CHECKOUT ────────────────────────────────────────────────────
+let deliveryCost=0;
+let deliveryLabel="Standard Delivery (3–5 days)";
+
+function startCheckout(){
+  if(!cart.length){alert("Your basket is empty.");return;}
+  closeCart();
+  buildCoSummary();
+  // Pre-fill from account if signed in
+  if(currentUser){
+    const fn=document.getElementById("co-fn"); if(fn&&!fn.value) fn.value=currentUser.firstName||"";
+    const ln=document.getElementById("co-ln"); if(ln&&!ln.value) ln.value=currentUser.lastName||"";
+    const em=document.getElementById("co-em"); if(em&&!em.value) em.value=currentUser.email||"";
+    const ph=document.getElementById("co-ph"); if(ph&&!ph.value) ph.value=currentUser.phone||"";
+    if(currentUser.address){
+      const parts=currentUser.address.split(",").map(s=>s.trim());
+      const a1=document.getElementById("co-a1"); if(a1&&!a1.value) a1.value=parts[0]||"";
+      const city=document.getElementById("co-city"); if(city&&!city.value) city.value=parts[parts.length-2]||"";
+      const pc=document.getElementById("co-pc"); if(pc&&!pc.value) pc.value=parts[parts.length-1]||"";
+    }
+  }
+  // reset to step 1
+  [1,2,3].forEach(n=>{ document.getElementById("co-panel-"+n).style.display=n===1?"":"none"; });
+  document.getElementById("co-panel-confirm").style.display="none";
+  document.getElementById("co-steps").style.display="flex";
+  setCoStep(1);
+  updateDelivery(document.querySelector('input[name="delivery"]:checked'));
+  goPage("checkout");
+}
+
+function buildCoSummary(){
+  const subtotal=cart.reduce((s,i)=>s+i.price*i.qty,0);
+  const items=cart.map(i=>`
+    <div class="co-sum-item">
+      <img src="${i.img}" alt="${i.name}"/>
+      <div class="co-sum-item-info"><strong>${i.name}</strong><span>UK ${i.size} · ${i.colour} · Qty ${i.qty}</span></div>
+      <span class="co-sum-item-price">£${(i.price*i.qty).toFixed(2)}</span>
+    </div>`).join("");
+  const stdFree=subtotal>=50;
+  document.getElementById("del-price-std").textContent=stdFree?"FREE":"£3.99";
+  deliveryCost=stdFree?0:3.99;
+  const total=(subtotal+deliveryCost).toFixed(2);
+  document.getElementById("co-summary").innerHTML=`
+    <p class="co-sum-h">Order Summary</p>
+    ${items}
+    <hr class="co-sum-divider"/>
+    <div class="co-sum-row"><span>Subtotal</span><span>£${subtotal.toFixed(2)}</span></div>
+    <div class="co-sum-row"><span>Delivery</span><span id="co-sum-del">${deliveryCost===0?"FREE":"£"+deliveryCost.toFixed(2)}</span></div>
+    <div class="co-sum-total"><span>Total</span><span id="co-sum-total">£${total}</span></div>`;
+}
+
+function updateDelivery(inp){
+  if(!inp) return;
+  const costs={standard:cart.reduce((s,i)=>s+i.price*i.qty,0)>=50?0:3.99, express:4.99, nextday:6.99};
+  const labels={standard:"Standard Delivery (3–5 days)", express:"Express (next working day)", nextday:"Next Day Delivery"};
+  deliveryCost=costs[inp.value]||0;
+  deliveryLabel=labels[inp.value]||"Delivery";
+  // update del-opt active state
+  document.querySelectorAll(".del-opt").forEach(el=>el.classList.remove("on"));
+  inp.closest(".del-opt")?.classList.add("on");
+  // update summary
+  const delEl=document.getElementById("co-sum-del");
+  const totEl=document.getElementById("co-sum-total");
+  const sub=cart.reduce((s,i)=>s+i.price*i.qty,0);
+  if(delEl) delEl.textContent=deliveryCost===0?"FREE":"£"+deliveryCost.toFixed(2);
+  if(totEl) totEl.textContent="£"+(sub+deliveryCost).toFixed(2);
+}
+
+function setCoStep(n){
+  [1,2,3].forEach(i=>{
+    const el=document.getElementById("cstep-"+i);
+    el.classList.remove("on","done");
+    if(i<n) el.classList.add("done");
+    if(i===n) el.classList.add("on");
+  });
+}
+
+function coContinue(step){
+  if(step===1){
+    const req=[["co-fn","First name"],["co-em","Email"],["co-a1","Address"],["co-city","City"],["co-pc","Postcode"]];
+    for(const [id,lbl] of req){ if(!document.getElementById(id).value.trim()){alert("Please enter your "+lbl.toLowerCase()+".");return;} }
+    document.getElementById("co-panel-1").style.display="none";
+    document.getElementById("co-panel-2").style.display="block";
+    setCoStep(2);
+  } else if(step===2){
+    const num=document.getElementById("co-cnum").value.replace(/\s/g,"");
+    const exp=document.getElementById("co-exp").value;
+    const cvv=document.getElementById("co-cvv").value;
+    const nm =document.getElementById("co-cname").value.trim();
+    if(!nm){alert("Please enter the name on your card.");return;}
+    if(num.length<15){alert("Please enter a valid card number.");return;}
+    if(!/^\d{2}\s?\/\s?\d{2}$/.test(exp)){alert("Please enter a valid expiry date (MM / YY).");return;}
+    if(cvv.length<3){alert("Please enter a valid CVV.");return;}
+    // Build review panel
+    const fn=document.getElementById("co-fn").value, ln=document.getElementById("co-ln").value;
+    const a1=document.getElementById("co-a1").value, a2=document.getElementById("co-a2").value;
+    const city=document.getElementById("co-city").value, pc=document.getElementById("co-pc").value;
+    const em=document.getElementById("co-em").value;
+    document.getElementById("co-review-delivery").innerHTML=`<h4>Delivery to</h4>${fn} ${ln}<br>${a1}${a2?", "+a2:""}, ${city}, ${pc}<br>${em}<br><br>${deliveryLabel}`;
+    const sub=cart.reduce((s,i)=>s+i.price*i.qty,0);
+    const items=cart.map(i=>`${i.name} (UK ${i.size} · ${i.colour} · Qty ${i.qty}) — £${(i.price*i.qty).toFixed(2)}`).join("<br>");
+    document.getElementById("co-review-items").innerHTML=`<h4>Items</h4>${items}<br><br><strong>Total: £${(sub+deliveryCost).toFixed(2)}</strong>`;
+    document.getElementById("co-panel-2").style.display="none";
+    document.getElementById("co-panel-3").style.display="block";
+    setCoStep(3);
+  }
+  window.scrollTo({top:document.getElementById("view-checkout").offsetTop,behavior:"smooth"});
+}
+
+function coBack(step){
+  if(step===2){
+    document.getElementById("co-panel-2").style.display="none";
+    document.getElementById("co-panel-1").style.display="block";
+    setCoStep(1);
+  } else if(step===3){
+    document.getElementById("co-panel-3").style.display="none";
+    document.getElementById("co-panel-2").style.display="block";
+    setCoStep(2);
+  }
+}
+
+function fmtCard(inp){
+  let v=inp.value.replace(/\D/g,"").slice(0,16);
+  inp.value=v.replace(/(.{4})/g,"$1 ").trim();
+}
+function fmtExp(inp){
+  let v=inp.value.replace(/\D/g,"").slice(0,4);
+  if(v.length>=3) v=v.slice(0,2)+" / "+v.slice(2);
+  inp.value=v;
+}
+
+function placeOrder(){
+  // Generate a realistic order number
+  const num="CLK-"+Math.floor(29000+Math.random()*3000);
+  const fn=document.getElementById("co-fn").value;
+  const sub=cart.reduce((s,i)=>s+i.price*i.qty,0);
+  const all=[...SP,...FM];
+  const ocItems=cart.map(i=>`<div class="tr-item"><img src="${i.img}" alt="${i.name}"/><div><strong>${i.name}</strong><br>UK ${i.size} · ${i.colour} · Qty ${i.qty}</div></div>`).join("");
+  document.getElementById("oc-num").textContent=num;
+  document.getElementById("oc-items").innerHTML=`<div style="margin:16px 0;">${ocItems}</div>`;
+  document.getElementById("oc-del-msg").textContent="Estimated delivery: "+deliveryLabel;
+  [1,2,3].forEach(n=>document.getElementById("co-panel-"+n).style.display="none");
+  document.getElementById("co-panel-confirm").style.display="block";
+  document.getElementById("co-steps").style.display="none";
+  // Add to demo track orders so user can actually track it
+  TRACK_ORDERS[num]={status:"Processing",statusCls:"ts-processing",chip:"transit",items:cart.map(i=>({id:i.id,qty:i.qty,sz:i.size,col:i.colour})),
+    steps:[{l:"Order Placed",d:"Just now",done:true,active:true},{l:"Payment Confirmed",d:"Just now",done:true},{l:"Picking &amp; Packing",d:"Pending",done:false},{l:"Dispatched",d:"Estimated tomorrow",done:false},{l:"Out for Delivery",d:"Estimated "+deliveryLabel,done:false},{l:"Delivered",d:"Estimated "+deliveryLabel,done:false}]};
+  // clear basket
+  cart=[];
+  updateCart();
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+// ─── ESCAPE KEY (extended) ────────────────────────────────────────
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape"){closeModal();closeCart();closeFilter();}
+});
+
+// ─── FILTER DRAWER (mobile) ──────────────────────────────────────
+function openFilterS(){
+  document.getElementById('sb-sport').classList.add('sb-open');
+  document.getElementById('sb-backdrop').classList.add('on');
+  document.body.style.overflow='hidden';
+}
+function openFilterF(){
+  document.getElementById('sb-formal').classList.add('sb-open');
+  document.getElementById('sb-backdrop').classList.add('on');
+  document.body.style.overflow='hidden';
+}
+function closeFilter(){
+  document.querySelectorAll('.sidebar').forEach(s=>s.classList.remove('sb-open'));
+  const bd=document.getElementById('sb-backdrop');
+  if(bd) bd.classList.remove('on');
+  document.body.style.overflow='';
+}
+</script>
+
+<div id="sb-backdrop" class="sb-backdrop" onclick="closeFilter()"></div>
+</body>
+</html>
+  
