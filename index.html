@@ -682,13 +682,13 @@ body.sport .co-btn:hover { background: #70dd00; }
 <!-- ANNOUNCEMENT BAR -->
 <div class="ann-bar">
   <div class="ann-track">
-    <span>🚚 Free Delivery Over £50</span><span style="opacity:.25;padding:0 0;">|</span>
+    <span>🚚 Free Delivery Over £100</span><span style="opacity:.25;padding:0 0;">|</span>
     <span>↩ Free Returns</span><span style="opacity:.25;padding:0 0;">|</span>
     <span>🎓 10% Student Discount</span><span style="opacity:.25;padding:0 0;">|</span>
-    <span>🚚 Free Delivery Over £50</span><span style="opacity:.25;padding:0 0;">|</span>
+    <span>🚚 Free Delivery Over £100</span><span style="opacity:.25;padding:0 0;">|</span>
     <span>↩ Free Returns</span><span style="opacity:.25;padding:0 0;">|</span>
     <span>🎓 10% Student Discount</span><span style="opacity:.25;padding:0 0;">|</span>
-    <span>🚚 Free Delivery Over £50</span><span style="opacity:.25;padding:0 0;">|</span>
+    <span>🚚 Free Delivery Over £100</span><span style="opacity:.25;padding:0 0;">|</span>
     <span>↩ Free Returns</span><span style="opacity:.25;padding:0 0;">|</span>
     <span>🎓 10% Student Discount</span>
   </div>
@@ -824,7 +824,7 @@ body.sport .co-btn:hover { background: #70dd00; }
   </div>
 
   <div class="feats">
-    <div class="feat"><div class="feat-ico">🚚</div><h4>Free Delivery</h4><p>On orders over £50</p></div>
+    <div class="feat"><div class="feat-ico">🚚</div><h4>Free Delivery</h4><p>On orders over £100</p></div>
     <div class="feat"><div class="feat-ico">↩</div><h4>Free Returns</h4><p>No questions asked</p></div>
     <div class="feat"><div class="feat-ico">🎓</div><h4>Student Discount</h4><p>10% off with ID</p></div>
     <div class="feat"><div class="feat-ico">❓</div><h4>Expert Help</h4><p>7 days a week</p></div>
@@ -1710,7 +1710,7 @@ function updateCart(){
   document.getElementById("cart-hdg").textContent="Your Basket ("+count+")";
   document.getElementById("cart-tot").textContent="£"+total.toFixed(2);
   const dn=document.getElementById("cart-del");
-  if(total>0&&total<50){dn.textContent="Add £"+(50-total).toFixed(2)+" more for free delivery";dn.style.display="block";}
+  if(total>0&&total<100){dn.textContent="Add £"+(100-total).toFixed(2)+" more for free delivery";dn.style.display="block";}
   else dn.style.display="none";
   const list=document.getElementById("cart-list"),empty=document.getElementById("cart-empty"),ft=document.getElementById("cart-ft");
   if(!cart.length){list.innerHTML="";empty.style.display="flex";ft.style.display="none";return;}
@@ -2086,7 +2086,7 @@ function filterStores(q){ renderStores(q); }
 // ─── HELP / FAQ ───────────────────────────────────────────────────
 const FAQS = [
   {q:"How long does standard delivery take?",a:"Standard delivery takes 3–5 working days. Express (next working day) and Next Day (order before 9pm) options are also available at checkout."},
-  {q:"Is delivery free?",a:"Yes — standard delivery is free on all orders over £50. Orders under £50 incur a small £3.99 delivery charge."},
+  {q:"Is delivery free?",a:"Yes — standard delivery is free on all orders over £100. Orders under £100 incur a small £3.99 delivery charge."},
   {q:"How do I return an item?",a:"You have 30 days to return any unworn item in its original packaging. Simply print your prepaid return label from your order confirmation email, attach it, and drop the parcel at any Post Office."},
   {q:"Can I exchange for a different size?",a:"Yes. Place a new order for the correct size and return the original. Your refund will be processed within 5 working days of us receiving the return."},
   {q:"How do I find my correct shoe size?",a:"Each product page includes a size guide. As a general rule, Clerks shoes are true to size. If you are between sizes, we recommend sizing up."},
@@ -2160,7 +2160,7 @@ function buildCoSummary(){
       <div class="co-sum-item-info"><strong>${i.name}</strong><span>UK ${i.size} · ${i.colour} · Qty ${i.qty}</span></div>
       <span class="co-sum-item-price">£${(i.price*i.qty).toFixed(2)}</span>
     </div>`).join("");
-  const stdFree=subtotal>=50;
+  const stdFree=subtotal>=100;
   document.getElementById("del-price-std").textContent=stdFree?"FREE":"£3.99";
   deliveryCost=stdFree?0:3.99;
   const total=(subtotal+deliveryCost).toFixed(2);
@@ -2175,7 +2175,7 @@ function buildCoSummary(){
 
 function updateDelivery(inp){
   if(!inp) return;
-  const costs={standard:cart.reduce((s,i)=>s+i.price*i.qty,0)>=50?0:3.99, express:4.99, nextday:6.99};
+  const costs={standard:cart.reduce((s,i)=>s+i.price*i.qty,0)>=100?0:3.99, express:4.99, nextday:6.99};
   const labels={standard:"Standard Delivery (3–5 days)", express:"Express (next working day)", nextday:"Next Day Delivery"};
   deliveryCost=costs[inp.value]||0;
   deliveryLabel=labels[inp.value]||"Delivery";
