@@ -292,6 +292,133 @@ async def fetch_products(store_type: str | None = None) -> list[dict]:
         return products
 
 
+async def search_products(
+    q: str | None = None,
+    store_type: str | None = None,
+    category: str | None = None,
+    brand: str | None = None,
+    min_price: float | None = None,
+    max_price: float | None = None,
+    on_sale: bool = False,
+    colour: str | None = None,
+    width: str | None = None,
+    sort: str = "featured",
+    limit: int = 20,
+) -> list[dict]:
+    """
+    Flexible product search used by the chatbot and the /api/products/search endpoint.
+    Returns the same dict shape as fetch_products(), capped at `limit` results.
+    """
+    import aiosqlite
+
+    # ── Build WHERE clauses ────────────────────────────────────────────────────
+    conditions: list[str] = []
+    params: list = []
+
+    if store_type:
+        conditions.append("p.store_type = ?")
+        params.append(store_type)
+
+    if category:
+        conditions.append("LOWER(p.category) = LOWER(?)")
+        params.append(category)
+
+    if brand:
+        conditions.append("LOWER(p.brand) LIKE LOWER(?)")
+        params.append(f"%{brand}%")
+
+    if min_price is not None:
+        conditions.append("p.price >= ?")
+        params.append(min_price)
+
+    if max_price is not None:
+        conditions.append("p.price <= ?")
+        params.append(max_price)
+
+    if on_sale:
+        conditions.append("p.was_price IS NOT NULL")
+
+    if width:
+        conditions.append("LOWER(p.width) = LOWER(?)")
+        params.append(width)
+
+    if q:
+        # Search name, brand, category, description, and features
+        like = f"%{q}%"
+        conditions.append(
+            "(LOWER(p.name) LIKE LOWER(?) OR LOWER(p.brand) LIKE LOWER(?)"
+            " OR LOWER(p.category) LIKE LOWER(?)"
+            " OR LOWER(p.description) LIKE LOWER(?)"
+            " OR EXISTS (SELECT 1 FROM product_features pf"
+            "            WHERE pf.product_id = p.id AND LOWER(pf.feature) LIKE LOWER(?)))"
+        )
+        params.extend([like, like, like, like, like])
+
+    where_sql = ("WHERE " + " AND ".join(conditions)) if conditions else ""
+
+    # ── Sort ───────────────────────────────────────────────────────────────────
+    order_map = {
+        "price-asc":  "p.price ASC",
+        "price-desc": "p.price DESC",
+        "rating":     "p.rating DESC",
+        "discount":   "CASE WHEN p.was_price IS NOT NULL THEN (1.0 - p.price / p.was_price) ELSE 0 END DESC",
+        "reviews":    "p.reviews DESC",
+        "featured":   "p.id ASC",
+    }
+    order_sql = order_map.get(sort, "p.id ASC")
+
+    sql = f"SELECT p.* FROM products p {where_sql} ORDER BY {order_sql} LIMIT ?"
+    params.append(limit)
+
+    async with aiosqlite.connect(DB_PATH) as db:
+        db.row_factory = aiosqlite.Row
+        rows = await db.execute_fetchall(sql, params)
+
+        # Colour filter is post-query (requires joining child table)
+        if colour:
+            colour_lc = colour.lower()
+            filtered = []
+            for row in rows:
+                col_rows = await db.execute_fetchall(
+                    "SELECT colour_name FROM product_colours WHERE product_id = ?", (row["id"],)
+                )
+                names = [c["colour_name"].lower() for c in col_rows]
+                if any(colour_lc in n for n in names):
+                    filtered.append(row)
+            rows = filtered
+
+        products = []
+        for row in rows:
+            pid = row["id"]
+            col_rows = await db.execute_fetchall(
+                "SELECT colour_name, hex_code, img_url FROM product_colours WHERE product_id = ?", (pid,)
+            )
+            cols = [{"n": c["colour_name"], "h": c["hex_code"], "img": c["img_url"]} for c in col_rows]
+            size_rows = await db.execute_fetchall(
+                "SELECT size FROM product_sizes WHERE product_id = ? ORDER BY size", (pid,)
+            )
+            sizes = [float(s["size"]) if "." in str(s["size"]) else int(s["size"]) for s in size_rows]
+            oos_rows = await db.execute_fetchall(
+                "SELECT size FROM product_oos WHERE product_id = ? ORDER BY size", (pid,)
+            )
+            oos = [float(o["size"]) if "." in str(o["size"]) else int(o["size"]) for o in oos_rows]
+            feat_rows = await db.execute_fetchall(
+                "SELECT feature FROM product_features WHERE product_id = ? ORDER BY sort_order", (pid,)
+            )
+            feats = [f["feature"] for f in feat_rows]
+            products.append({
+                "id": pid, "store_type": row["store_type"], "name": row["name"],
+                "brand": row["brand"], "category": row["category"],
+                "price": float(row["price"]),
+                "was": float(row["was_price"]) if row["was_price"] is not None else None,
+                "rating": float(row["rating"]), "reviews": int(row["reviews"]),
+                "img": row["img_url"], "cols": cols, "sizes": sizes, "oos": oos,
+                "desc": row["description"], "feats": feats,
+                "isNew": bool(row["is_new"]), "width": row["width"],
+            })
+        return products
+
+
 # ── User helpers ───────────────────────────────────────────────────────────────
 
 def hash_password(password: str) -> str:

@@ -101,6 +101,28 @@ async def get_products(store_type: Optional[str] = Query(default=None)):
     return await db.fetch_products(store_type=store_type)
 
 
+@app.get("/api/products/search")
+async def search_products(
+    q:          Optional[str]   = Query(default=None, description="Free-text search across name, brand, category, description, features"),
+    store_type: Optional[str]   = Query(default=None, description="'sports' or 'formal'"),
+    category:   Optional[str]   = Query(default=None, description="e.g. Running, Oxford Shoes"),
+    brand:      Optional[str]   = Query(default=None, description="Partial brand name match"),
+    min_price:  Optional[float] = Query(default=None, description="Minimum price (£)"),
+    max_price:  Optional[float] = Query(default=None, description="Maximum price (£)"),
+    on_sale:    bool             = Query(default=False, description="Only return discounted products"),
+    colour:     Optional[str]   = Query(default=None, description="Colour name substring match"),
+    width:      Optional[str]   = Query(default=None, description="Standard, Wide, Extra Wide"),
+    sort:       str              = Query(default="featured", description="featured|price-asc|price-desc|rating|discount|reviews"),
+    limit:      int              = Query(default=20, ge=1, le=50, description="Max results (1-50)"),
+):
+    """Search and filter products from the database. Used by the AI chatbot."""
+    return await db.search_products(
+        q=q, store_type=store_type, category=category, brand=brand,
+        min_price=min_price, max_price=max_price, on_sale=on_sale,
+        colour=colour, width=width, sort=sort, limit=limit,
+    )
+
+
 # ── Auth ───────────────────────────────────────────────────────────────────────
 
 @app.post("/api/register")
